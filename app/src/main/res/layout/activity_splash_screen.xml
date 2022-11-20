@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/Lawrencium"
+    android:background="@drawable/lawrencium"
     tools:context=".Splash_Screen" >
 
     <FrameLayout
@@ -15,12 +15,12 @@
             android:id="@+id/imageView"
             android:layout_width="314dp"
             android:layout_height="310dp"
-            android:src="@drawable/Logo1" />
+            android:src="@drawable/logo" />
 
         <ImageView
             android:layout_width="230dp"
             android:layout_height="230dp"
-            android:src="@drawable/Text" />
+            android:src="@drawable/text" />
 <!--                <TextView-->
 <!--            android:id="@+id/textView"-->
 <!--            android:layout_width="wrap_content"-->

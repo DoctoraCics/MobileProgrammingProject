@@ -14,8 +14,36 @@
         android:theme="@style/Theme.MobileProgrammingProject"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
-            android:exported="true">
+            android:name=".Developers_Screen"
+            android:exported="false" />
+        <activity
+            android:name=".About_Screen"
+            android:exported="false" />
+        <activity
+            android:name=".Update_Student_Screen"
+            android:exported="false" />
+        <activity
+            android:name=".Enroll_Student_Screen"
+            android:exported="false" />
+        <activity
+            android:name=".Specific_Subject_Screen"
+            android:exported="false" />
+        <activity
+            android:name=".Update_Subject_Screen"
+            android:exported="false" />
+        <activity
+            android:name=".Add_Subject_Screen"
+            android:exported="false" />
+        <activity
+            android:name=".Subject_Screen"
+            android:exported="false" />
+        <activity
+            android:name=".Home_Screen"
+            android:exported="false" />
+        <activity
+            android:name=".Splash_Screen"
+            android:exported="true"
+            android:theme="@style/SplasScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

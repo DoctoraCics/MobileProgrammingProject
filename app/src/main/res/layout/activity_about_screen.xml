@@ -6,4 +6,30 @@
     android:layout_height="match_parent"
     tools:context=".About_Screen">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:text="T & S Academic Records is a mobile application that helps teachers and professors alike. For feedback you can contact us at T&Ssupport@ts.com"
+            android:textAlignment="center"
+            android:textSize="34sp" />
+
+        <Button
+            android:id="@+id/abtDev"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="#D2FF5722"
+            android:gravity="center"
+            android:text="about developers"
+            android:textColor="#101010"
+            app:backgroundTint="#FF9800"
+            app:iconTint="#000000" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

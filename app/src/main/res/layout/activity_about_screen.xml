@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif"
-            android:text="T & S Academic Records is a mobile application that helps teachers and professors alike. For feedback you can contact us at T&Ssupport@ts.com"
+            android:text="T &amp; S Academic Records is a mobile application that helps teachers and professors alike. For feedback you can contact us at T&amp;Ssupport@ts.com"
             android:textAlignment="center"
             android:textSize="34sp" />
 

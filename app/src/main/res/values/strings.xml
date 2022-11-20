@@ -1,3 +1,24 @@
 <resources>
     <string name="app_name">MobileProgrammingProject</string>
+
+    <!-- Toolbar-->
+    <string name="navigation_open">Open Navigation Drawer</string>
+    <string name="navigation_close">Close Navigation Drawer</string>
+
+    <!-- Tables-->
+    <string name="column_subject">Subject</string>
+    <string name="column_code">Code</string>
+    <string name="column_status">Status</string>
+    <string name="column_action">Action</string>
+
+    <string name="row_subject">Subject</string>
+    <string name="row_code">Code</string>
+    <string name="row_status">Status</string>
+    <string name="row_action">Action</string>
+
+    <string name="column_name">Name</string>
+    <string name="column_grade">Grade</string>
+
+    <string name="row_name">Name</string>
+    <string name="row_grade">Grade</string>
 </resources>

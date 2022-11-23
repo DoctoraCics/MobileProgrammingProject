@@ -14,10 +14,44 @@
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
-            android:layout_width="412dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#F5881F"
             android:minHeight="?attr/actionBarSize"
             android:theme="?attr/actionBarTheme" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="About the developers"
+            android:textColor="#F1EEEE"
+            android:textSize="34sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/feivel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Feivel Doctora" />
+
+            <Button
+                android:id="@+id/jez"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="John Eleazar Sandi" />
+
+            <Button
+                android:id="@+id/joseph"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Joseph Gabriel Tamayo" />
+        </LinearLayout>
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

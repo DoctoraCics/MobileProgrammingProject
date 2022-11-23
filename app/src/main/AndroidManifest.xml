@@ -14,6 +14,15 @@
         android:theme="@style/Theme.MobileProgrammingProject"
         tools:targetApi="31">
         <activity
+            android:name=".Tamayo_Screen"
+            android:exported="false" />
+        <activity
+            android:name=".Sandi_Screen"
+            android:exported="false" />
+        <activity
+            android:name=".Doctora_Screen"
+            android:exported="false" />
+        <activity
             android:name=".Developers_Screen"
             android:exported="false" />
         <activity
@@ -50,9 +59,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-3940256099942544~3347511713"/>
+            android:value="ca-app-pub-3940256099942544~3347511713" />
     </application>
 
 </manifest>

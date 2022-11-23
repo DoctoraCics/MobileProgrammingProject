@@ -52,6 +52,7 @@
             android:id="@+id/button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:backgroundTint="#F5881F"
             android:text="Confirm" />
 
         <ImageView

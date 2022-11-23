@@ -24,110 +24,134 @@
             android:id="@+id/addSubject"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:backgroundTint="#F5881F"
             android:text="Add Subject" />
 
-        <TableLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="40dp"
-            android:layout_marginEnd="40dp"
-            android:layout_marginBottom="40dp"
-            android:background="@android:color/white">
+            android:layout_height="match_parent">
 
-            <!-- Table Heading -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-            <TableRow android:background="#F5881F">
-
-                <TextView
-                    android:layout_width="0dp"
+                <TableLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="4"
-                    android:gravity="center_horizontal"
-                    android:padding="10sp"
-                    android:text="@string/column_subject"
-                    android:textColor="@android:color/white"
-                    android:textSize="14sp" />
+                    android:layout_marginStart="40dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginEnd="40dp"
+                    android:layout_marginBottom="40dp"
+                    android:background="@android:color/white">
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="4"
-                    android:gravity="center_horizontal"
-                    android:padding="10sp"
-                    android:text="@string/column_code"
-                    android:textColor="@android:color/white"
-                    android:textSize="14sp" />
+                    <!-- Table Heading -->
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="4"
-                    android:gravity="center_horizontal"
-                    android:padding="10sp"
-                    android:text="@string/column_status"
-                    android:textColor="@android:color/white"
-                    android:textSize="14sp" />
+                    <TableRow android:background="#F5881F">
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="4"
-                    android:gravity="center_horizontal"
-                    android:padding="10sp"
-                    android:text="@string/column_action"
-                    android:textColor="@android:color/white"
-                    android:textSize="14sp" />
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="4"
+                            android:gravity="center_horizontal"
+                            android:padding="10sp"
+                            android:text="@string/column_subject"
+                            android:textColor="@android:color/white"
+                            android:textSize="14sp" />
 
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="4"
+                            android:gravity="center_horizontal"
+                            android:padding="10sp"
+                            android:text="@string/column_code"
+                            android:textColor="@android:color/white"
+                            android:textSize="14sp" />
 
-            </TableRow>
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="4"
+                            android:gravity="center_horizontal"
+                            android:padding="10sp"
+                            android:text="@string/column_status"
+                            android:textColor="@android:color/white"
+                            android:textSize="14sp" />
 
-            <!-- Table Data -->
-
-            <TableRow>
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1.5"
-                    android:gravity="center_horizontal"
-                    android:padding="10sp"
-                    android:text="@string/row_subject"
-                    android:textSize="12sp" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1.5"
-                    android:gravity="center_horizontal"
-                    android:padding="10sp"
-                    android:text="@string/row_code"
-                    android:textSize="12sp" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1.5"
-                    android:gravity="center_horizontal"
-                    android:padding="10sp"
-                    android:text="@string/row_status"
-                    android:textSize="12sp" />
-
-                <Button
-                    android:id="@+id/update2"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1.5"
-                    android:gravity="center_horizontal"
-                    android:padding="10sp"
-                    android:text="Update"
-                    android:textSize="12sp"
-                    app:backgroundTint="#F5881F" />
-
-            </TableRow>
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="4"
+                            android:gravity="center_horizontal"
+                            android:padding="10sp"
+                            android:text="@string/column_action"
+                            android:textColor="@android:color/white"
+                            android:textSize="14sp" />
 
 
-        </TableLayout>
+                    </TableRow>
+
+                    <!-- Table Data -->
+
+                    <TableRow>
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.5"
+                            android:gravity="center_horizontal"
+                            android:padding="10sp"
+                            android:text="@string/row_subject"
+                            android:textSize="12sp" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.5"
+                            android:gravity="center_horizontal"
+                            android:padding="10sp"
+                            android:text="@string/row_subject"
+                            android:textSize="12sp" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.5"
+                            android:gravity="center_horizontal"
+                            android:padding="10sp"
+                            android:text="@string/row_subject"
+                            android:textSize="12sp" />
+
+                        <Button
+                            android:id="@+id/update2"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.5"
+                            android:gravity="center_horizontal"
+                            android:padding="10sp"
+                            android:text="Update"
+                            android:textSize="12sp"
+                            app:backgroundTint="#2196F3" />
+
+                        <Button
+                            android:id="@+id/delete2"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.5"
+                            android:gravity="center_horizontal"
+                            android:padding="10sp"
+                            android:text="Delete"
+                            android:textSize="12sp"
+                            app:backgroundTint="#F44336" />
+
+                    </TableRow>
+
+
+                </TableLayout>
+            </LinearLayout>
+        </ScrollView>
+
     </LinearLayout>
 
 </RelativeLayout>

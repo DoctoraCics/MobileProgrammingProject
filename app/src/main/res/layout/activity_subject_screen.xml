@@ -21,8 +21,8 @@
             android:theme="?attr/actionBarTheme" />
 
         <Button
-            android:id="@+id/button3"
-            android:layout_width="wrap_content"
+            android:id="@+id/addSubject"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Add Subject" />
 
@@ -114,14 +114,15 @@
                     android:textSize="12sp" />
 
                 <Button
-                    android:id="@+id/button2"
+                    android:id="@+id/update2"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.5"
                     android:gravity="center_horizontal"
                     android:padding="10sp"
                     android:text="Update"
-                    android:textSize="12sp" />
+                    android:textSize="12sp"
+                    app:backgroundTint="#F5881F" />
 
             </TableRow>
 

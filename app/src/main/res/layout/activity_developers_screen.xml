@@ -6,4 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".Developers_Screen">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#1864B0">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="412dp"
+            android:layout_height="wrap_content"
+            android:background="#F5881F"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

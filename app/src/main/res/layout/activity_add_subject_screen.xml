@@ -21,22 +21,22 @@
             android:theme="?attr/actionBarTheme" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/enterSubj2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
             android:text="Subject" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName2"
+            android:id="@+id/enterSubj"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
             android:ems="10"
             android:hint="Enter Subject"
+            android:inputType="textPersonName"
             android:textColor="@color/white"
-            android:backgroundTint="@color/white"
-            android:textColorHint="@color/white"
-            android:inputType="textPersonName" />
+            android:textColorHint="@color/white" />
 
         <TextView
             android:id="@+id/textView3"
@@ -46,7 +46,7 @@
             android:text="Code" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName"
+            android:id="@+id/enterCode"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -64,14 +64,14 @@
             android:text="Status" />
 
         <Spinner
-            android:id="@+id/spinner2"
+            android:id="@+id/statusdropdown"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
 
         <Button
-            android:id="@+id/button3"
-            android:layout_width="wrap_content"
+            android:id="@+id/addSubj"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Add Subject" />
 

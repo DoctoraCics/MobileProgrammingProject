@@ -21,8 +21,8 @@
             android:theme="?attr/actionBarTheme" />
 
         <Button
-            android:id="@+id/button3"
-            android:layout_width="wrap_content"
+            android:id="@+id/enrollStudent2"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Enroll Student" />
 
@@ -133,14 +133,15 @@
                     android:textSize="12sp" />
 
                 <Button
-                    android:id="@+id/button2"
+                    android:id="@+id/update2"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.5"
                     android:gravity="center_horizontal"
                     android:padding="10sp"
                     android:text="Update"
-                    android:textSize="12sp" />
+                    android:textSize="12sp"
+                    app:backgroundTint="#F5881F" />
 
             </TableRow>
 
@@ -151,24 +152,26 @@
             android:id="@+id/editTextTextMultiLine"
             android:layout_width="match_parent"
             android:layout_height="320dp"
+            android:backgroundTint="@color/white"
             android:ems="10"
             android:gravity="start|top"
             android:hint="Enter Notes"
-            android:backgroundTint="@color/white"
-            android:textColorHint="@color/white"
-            android:inputType="textMultiLine" />
+            android:inputType="textMultiLine"
+            android:textColorHint="@color/white" />
 
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/save"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Save" />
+            android:text="Save Notes"
+            app:backgroundTint="#F5881F" />
 
         <Button
-            android:id="@+id/button5"
+            android:id="@+id/clear"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Clear" />
+            android:text="Clear Notes"
+            app:backgroundTint="#F5881F" />
     </LinearLayout>
 
 </RelativeLayout>

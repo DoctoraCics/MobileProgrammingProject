@@ -149,7 +149,7 @@
         </TableLayout>
 
         <EditText
-            android:id="@+id/editTextTextMultiLine"
+            android:id="@+id/enternotes"
             android:layout_width="match_parent"
             android:layout_height="320dp"
             android:backgroundTint="@color/white"

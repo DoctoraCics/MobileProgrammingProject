@@ -28,7 +28,7 @@
             android:textColor="@color/white" />
 
         <EditText
-            android:id="@+id/studentname"
+            android:id="@+id/studentName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -45,7 +45,7 @@
             android:textColor="@color/white" />
 
         <EditText
-            android:id="@+id/entergrade"
+            android:id="@+id/enterGrade"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -62,7 +62,7 @@
             android:textColor="@color/white" />
 
         <Spinner
-            android:id="@+id/statusspinner"
+            android:id="@+id/statusSpinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
@@ -74,12 +74,12 @@
             android:textColor="@color/white" />
 
         <Spinner
-            android:id="@+id/subjectspinner"
+            android:id="@+id/subjectSpinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
         <Button
-            android:id="@+id/enrollstudent"
+            android:id="@+id/enrollStudent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:backgroundTint="#F5881F"

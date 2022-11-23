@@ -172,7 +172,7 @@
         </ScrollView>
 
         <EditText
-            android:id="@+id/enternotes"
+            android:id="@+id/enterNotes"
             android:layout_width="match_parent"
             android:layout_height="320dp"
             android:backgroundTint="@color/white"

@@ -9,8 +9,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="#1864B0">
+        android:background="#1864B0"
+        android:orientation="vertical">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar2"
@@ -19,6 +19,13 @@
             android:background="#F5881F"
             android:minHeight="?attr/actionBarSize"
             android:theme="?attr/actionBarTheme" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            app:srcCompat="@drawable/tamayo" />
 
         <TextView
             android:id="@+id/textView6"
@@ -33,6 +40,7 @@
             android:id="@+id/textView7"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:text="Socials:"
             android:textColor="#FDFCFC"
             android:textSize="20sp" />
@@ -49,6 +57,7 @@
             android:id="@+id/button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:text="Go back to developer page"
             app:backgroundTint="#F5881F" />
     </LinearLayout>

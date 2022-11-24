@@ -2,8 +2,8 @@
     <string name="app_name">MobileProgrammingProject</string>
 
     <!-- Toolbar-->
-    <string name="navigation_open">Open Navigation Drawer</string>
-    <string name="navigation_close">Close Navigation Drawer</string>
+    <string name="open">Open Navigation Drawer</string>
+    <string name="close">Close Navigation Drawer</string>
 
     <!-- Tables-->
     <string name="column_subject">Subject</string>

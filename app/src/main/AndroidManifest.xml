@@ -15,40 +15,40 @@
         tools:targetApi="31">
         <activity
             android:name=".Tamayo_Screen"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".Sandi_Screen"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".Doctora_Screen"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".Developers_Screen"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".About_Screen"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".Update_Student_Screen"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".Enroll_Student_Screen"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".Specific_Subject_Screen"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".Update_Subject_Screen"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".Add_Subject_Screen"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".Subject_Screen"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".Home_Screen"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".Splash_Screen"
             android:exported="true"

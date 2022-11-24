@@ -5,29 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#1864B0"
+    android:orientation="vertical"
     tools:context=".Home_Screen"
-    android:id="@+id/drawerlayout"
-    android:fitsSystemWindows="true"
-    tools:openDrawer="start">
-
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/navigationview"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:background="#FFFFFF"
-        app:headerLayout="@layout/header"
-        app:menu="@menu/sidemenu" />
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
-
-    </ScrollView>
+    android:id="@+id/drawerLayout">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -35,13 +15,18 @@
         android:background="#1864B0"
         android:orientation="vertical">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="412dp"
-            android:layout_height="wrap_content"
-            android:background="#F5881F"
-            android:minHeight="?attr/actionBarSize"
-            android:theme="?attr/actionBarTheme" />
+        <include
+            layout="@layout/navigation_action"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <!--        <androidx.appcompat.widget.Toolbar-->
+        <!--            android:id="@+id/toolbar"-->
+        <!--            android:layout_width="412dp"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:background="#F5881F"-->
+        <!--            android:minHeight="?attr/actionBarSize"-->
+        <!--            android:theme="?attr/actionBarTheme" />-->
 
         <Spinner
             android:id="@+id/spinnerHome"
@@ -52,8 +37,8 @@
             android:id="@+id/buttonHome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:backgroundTint="#F5881F"
-            android:text="Confirm" />
+            android:text="Confirm"
+            app:backgroundTint="#F5881F" />
 
         <ImageView
             android:id="@+id/imageView"
@@ -62,4 +47,13 @@
             app:srcCompat="@drawable/ads" />
 
     </LinearLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        app:menu="@menu/navigation_menu"
+        android:layout_gravity="start"
+        app:headerLayout="@layout/navigation_header">
+</com.google.android.material.navigation.NavigationView>
+
 </androidx.drawerlayout.widget.DrawerLayout>

@@ -6,25 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".Subject_Screen">
 
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/navigationview"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:background="#FFFFFF"
-        app:headerLayout="@layout/header"
-        app:menu="@menu/sidemenu" />
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
-
-    </ScrollView>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -58,10 +39,6 @@
                 <TableLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="40dp"
-                    android:layout_marginTop="40dp"
-                    android:layout_marginEnd="40dp"
-                    android:layout_marginBottom="40dp"
                     android:background="@android:color/white">
 
                     <!-- Table Heading -->

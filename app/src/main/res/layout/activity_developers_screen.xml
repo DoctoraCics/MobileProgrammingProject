@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Developers_Screen">
+    tools:context=".Developers_Screen"
+    android:id="@+id/drawerLayout">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -12,13 +13,10 @@
         android:orientation="vertical"
         android:background="#1864B0">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
+        <include
+            layout="@layout/navigation_action"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#F5881F"
-            android:minHeight="?attr/actionBarSize"
-            android:theme="?attr/actionBarTheme" />
+            android:layout_height="wrap_content" />
 
         <TextView
             android:id="@+id/textView4"
@@ -38,20 +36,32 @@
                 android:id="@+id/feivel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:backgroundTint="#FF9800"
                 android:text="Feivel Doctora" />
 
             <Button
                 android:id="@+id/jez"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:backgroundTint="#FF9800"
                 android:text="John Eleazar Sandi" />
 
             <Button
                 android:id="@+id/joseph"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:backgroundTint="#FF9800"
                 android:text="Joseph Gabriel Tamayo" />
         </LinearLayout>
 
     </LinearLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        app:menu="@menu/navigation_menu"
+        android:layout_gravity="start"
+        app:headerLayout="@layout/navigation_header"/>
+
+</androidx.drawerlayout.widget.DrawerLayout>

@@ -21,16 +21,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-
-
-        <!--        <androidx.appcompat.widget.Toolbar-->
-        <!--            android:id="@+id/toolbar"-->
-        <!--            android:layout_width="412dp"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:background="#F5881F"-->
-        <!--            android:minHeight="?attr/actionBarSize"-->
-        <!--            android:theme="?attr/actionBarTheme" />-->
-
         <Spinner
             android:id="@+id/spinnerHome"
             android:layout_width="match_parent"
@@ -50,6 +40,7 @@
             app:srcCompat="@drawable/ads" />
 
     </LinearLayout>
+
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_menu"
         android:layout_width="wrap_content"

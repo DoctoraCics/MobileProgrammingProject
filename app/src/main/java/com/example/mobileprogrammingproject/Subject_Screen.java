@@ -9,6 +9,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
@@ -20,6 +22,8 @@ public class Subject_Screen extends AppCompatActivity {
     private Toolbar toolbar;
     NavigationView navigationView;
     Intent intent;
+
+    private Button button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,12 +52,57 @@ public class Subject_Screen extends AppCompatActivity {
                         startActivity(intent);
                         finish();
                         return true;
-                    case R.id.subjects:
-                        Toast.makeText(getApplicationContext(),"You are already at the home screen", Toast.LENGTH_SHORT).show();
+                    case R.id.about:
+                        intent = new Intent(Subject_Screen.this, About_Screen.class);
+                        startActivity(intent);
+                        finish();
                         return true;
+                    case R.id.subjects:
+                        Toast.makeText(getApplicationContext(),"You are already at the subject screen", Toast.LENGTH_SHORT).show();
+                        return true;
+                    case R.id.exit:
+                        System.exit(0);
                 }
                 return true;
             }
         });
+
+        button = (Button) findViewById(R.id.addSubject);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openAddSubjectScreen();
+            }
+        });
+
+        button = (Button) findViewById(R.id.updateSubject);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openUpdateSubjectScreen();
+            }
+        });
+
     }
+
+    public void openAddSubjectScreen(){
+        Intent intent = new Intent(this, Add_Subject_Screen.class);
+        startActivity(intent);
+    }
+
+    public void openUpdateSubjectScreen(){
+        Intent intent = new Intent(this, Update_Subject_Screen.class);
+        startActivity(intent);
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        if(toggling.onOptionsItemSelected(item))
+        {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
     }

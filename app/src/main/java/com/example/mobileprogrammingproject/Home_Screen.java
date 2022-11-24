@@ -1,45 +1,59 @@
 package com.example.mobileprogrammingproject;
 
-import androidx.appcompat.app.ActionBar;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 
 public class Home_Screen extends AppCompatActivity {
-    private DrawerLayout mDrawerLayout;
-    private ActionBarDrawerToggle mToggle;
-    private Toolbar mToolbar;
+    private DrawerLayout drawerLayout;
+    private ActionBarDrawerToggle toggling;
+    private Toolbar toolbar;
+    NavigationView navigationView;
+    Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
 
-        mToolbar = (Toolbar) findViewById(R.id.nav_action);
-        setSupportActionBar(mToolbar);
+        toolbar = (Toolbar) findViewById(R.id.nav_action);
+        setSupportActionBar(toolbar);
 
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
-        mToggle =  new ActionBarDrawerToggle(this, mDrawerLayout, R.string.open, R.string.close);
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
+        toggling =  new ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close);
 
-        mDrawerLayout.addDrawerListener(mToggle);
-        mToggle.syncState();
+        drawerLayout.addDrawerListener(toggling);
+        toggling.syncState();
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-    }
+        navigationView = (NavigationView) findViewById(R.id.nav_menu);
 
-    public boolean onOptionsItemSelected(MenuItem item)
-    {
-        if(mToggle.onOptionsItemSelected(item))
-        {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
+
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.home:
+                        Toast.makeText(getApplicationContext(),"You are already at the home screen", Toast.LENGTH_SHORT).show();
+                        return true;
+                    case R.id.subjects:
+                        intent = new Intent(Home_Screen.this, Subject_Screen.class);
+                        startActivity(intent);
+                        finish();
+                        return true;
+                }
+                return true;
+            }
+        });
     }
 }

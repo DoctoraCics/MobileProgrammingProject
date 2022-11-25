@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.concurrent.ThreadLocalRandom;
+import java.util.Random;
 
 public class databaseHandler {
 
@@ -162,7 +162,7 @@ public class databaseHandler {
             connection.setAutoCommit(false);
             System.out.println("Opened database successfully");
 
-            int randomId = ThreadLocalRandom.current().nextInt(0, 100000 + 1);
+            int randomId = generateRandomId(0, 100000);
 
             String sqlStmt = "INSERT INTO Student_Table (Student_Number, Student_Name, Student_Grade, Student_Status, Subject_Id)\n"
                     + "VALUES (?, ?, ?, ?, ?);";
@@ -193,7 +193,7 @@ public class databaseHandler {
             connection.setAutoCommit(false);
             System.out.println("Opened database successfully");
 
-            int randomId = ThreadLocalRandom.current().nextInt(0, 100000 + 1);
+            int randomId = generateRandomId(0, 100000);
 
             String sqlStmt = "INSERT INTO Subject_Table (Subject_Id,Subject_Name, Subject_Code, Subject_Status)\n"
                     + "VALUES (?, ?, ?, ?);";
@@ -271,6 +271,11 @@ public class databaseHandler {
             System.exit(0);
             return false;
         }
+    }
+
+    public int generateRandomId(int min, int max){
+        int random = new Random().nextInt((max - min) + 1) + min;
+        return random;
     }
 }
 

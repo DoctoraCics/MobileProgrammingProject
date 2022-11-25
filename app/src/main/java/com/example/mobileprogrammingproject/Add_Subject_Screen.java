@@ -11,9 +11,14 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.mobileprogrammingproject.model.androidDBHandlerSqlLite;
 import com.google.android.material.navigation.NavigationView;
+
+import org.w3c.dom.Text;
 
 public class Add_Subject_Screen extends AppCompatActivity {
     private DrawerLayout drawerLayout;
@@ -22,13 +27,22 @@ public class Add_Subject_Screen extends AppCompatActivity {
     NavigationView navigationView;
     Intent intent;
 
-    private Button button;
+    private androidDBHandlerSqlLite db;
+    private TextView enterSubj;
+    private TextView enterCode;
+    private Spinner statusDropdown;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_subject_screen);
-
         intent = getIntent();
+
+        db = new androidDBHandlerSqlLite(this);
+
+        this.enterSubj = (TextView) findViewById(R.id.enterSubj);
+        this.enterCode = (TextView) findViewById(R.id.enterCode);
+        this.statusDropdown = (Spinner) findViewById(R.id.statusDropdown);
 
         toolbar = (Toolbar) findViewById(R.id.nav_action);
         setSupportActionBar(toolbar);
@@ -67,19 +81,21 @@ public class Add_Subject_Screen extends AppCompatActivity {
                 return true;
             }
         });
-
-        button = (Button) findViewById(R.id.addSubj);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openSubjectScreen();
-            }
-        });
     }
 
-    public void openSubjectScreen(){
-        Intent intent = new Intent(this, Subject_Screen.class);
-        startActivity(intent);
+    public void addSubjectDB(View view){
+        String enteredSubj = this.enterSubj.getText().toString();
+        String enteredCode = this.enterCode.getText().toString();
+        String selectedStatus = this.statusDropdown.getSelectedItem().toString();
+        if (db.insertSubject(enteredSubj, enteredCode, selectedStatus)) {
+            Toast.makeText(getApplicationContext(),"Success!", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this, Subject_Screen.class);
+            startActivity(intent);
+        }
+        else{
+            Toast.makeText(getApplicationContext(),"Failed", Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     public boolean onOptionsItemSelected(MenuItem item)

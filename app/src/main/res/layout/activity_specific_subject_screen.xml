@@ -22,6 +22,7 @@
             android:id="@+id/enrollStudent2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="enrollStudentScreen"
             android:text="Enroll Student"
             app:backgroundTint="#F5881F" />
 
@@ -133,6 +134,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1.5"
                     android:gravity="center_horizontal"
+                    android:onClick="updateStudentScreen"
                     android:padding="10sp"
                     android:text="Update"
                     android:textSize="12sp"
@@ -157,7 +159,7 @@
         <EditText
             android:id="@+id/enterNotes"
             android:layout_width="match_parent"
-            android:layout_height="320dp"
+            android:layout_height="294dp"
             android:backgroundTint="@color/white"
             android:ems="10"
             android:gravity="start|top"
@@ -169,6 +171,7 @@
             android:id="@+id/save"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="saveNotes"
             android:text="Save Notes"
             app:backgroundTint="#F5881F" />
 
@@ -176,6 +179,7 @@
             android:id="@+id/clear"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="deleteNotes"
             android:text="Clear Notes"
             app:backgroundTint="#F5881F" />
     </LinearLayout>

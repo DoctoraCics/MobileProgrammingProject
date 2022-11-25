@@ -11,8 +11,11 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.mobileprogrammingproject.model.androidDBHandlerSqlLite;
 import com.google.android.material.navigation.NavigationView;
 
 public class Subject_Screen extends AppCompatActivity {
@@ -23,6 +26,11 @@ public class Subject_Screen extends AppCompatActivity {
     NavigationView navigationView;
     Intent intent;
 
+    private TextView enterSubj;
+    private TextView enterCode;
+    private Spinner statusDropdown;
+    private androidDBHandlerSqlLite db;
+
     private Button button;
 
     @Override
@@ -30,6 +38,13 @@ public class Subject_Screen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_subject_screen);
         intent = getIntent();
+
+        db = new androidDBHandlerSqlLite(this);
+
+        this.enterSubj = (TextView) findViewById(R.id.enterSubj);
+        this.enterCode = (TextView) findViewById(R.id.enterCode);
+        this.statusDropdown = (Spinner) findViewById(R.id.statusDropdown);
+
 
         toolbar = (Toolbar) findViewById(R.id.nav_action);
         setSupportActionBar(toolbar);

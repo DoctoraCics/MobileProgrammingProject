@@ -64,15 +64,18 @@
         <Spinner
             android:id="@+id/statusDropdown"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:entries="@array/subjectStatusOptions"
+            />
 
 
         <Button
             android:id="@+id/addSubj"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:backgroundTint="#F5881F"
-            android:text="Add Subject" />
+            android:onClick="addSubjectDB"
+            android:text="Add Subject"
+            app:backgroundTint="#F5881F" />
 
     </LinearLayout>
 

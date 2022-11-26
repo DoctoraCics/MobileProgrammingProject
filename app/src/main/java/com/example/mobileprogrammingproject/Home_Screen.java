@@ -22,12 +22,14 @@ import com.google.android.material.navigation.NavigationView;
 import java.util.ArrayList;
 
 public class Home_Screen extends AppCompatActivity {
+
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle toggling;
     private Toolbar toolbar;
     private Spinner spinnerHome;
-    NavigationView navigationView;
-    Intent intent;
+
+    private NavigationView navigationView;
+    public Intent intent;
 
     private androidDBHandlerSqlLite db;
     public final static String SUBJECT_ID = "com.example.mobileprogrammingproject.SUBJECT_ID";
@@ -38,7 +40,6 @@ public class Home_Screen extends AppCompatActivity {
         setContentView(R.layout.activity_home_screen);
 
         spinnerHome = (Spinner) findViewById(R.id.spinnerHome);
-
         db = new androidDBHandlerSqlLite(this);
 
         toolbar = (Toolbar) findViewById(R.id.nav_action);
@@ -49,16 +50,15 @@ public class Home_Screen extends AppCompatActivity {
 
         drawerLayout.addDrawerListener(toggling);
         toggling.syncState();
-
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         try{
-        ArrayList subjectList = db.selectSubjects();
-        ArrayAdapter<Subject> displaySubjectList = new ArrayAdapter<Subject>(
-                getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, subjectList);
-        displaySubjectList.setDropDownViewResource( android.R.layout.simple_spinner_dropdown_item
-        );
-        spinnerHome.setAdapter(displaySubjectList);} catch (Exception e){
+            ArrayList subjectList = db.selectSubjects();
+            ArrayAdapter<Subject> displaySubjectList = new ArrayAdapter<Subject>(
+                    getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, subjectList);
+            displaySubjectList.setDropDownViewResource( android.R.layout.simple_spinner_dropdown_item
+            );
+            spinnerHome.setAdapter(displaySubjectList);} catch (Exception e){
             e.printStackTrace();
         }
 
@@ -89,7 +89,6 @@ public class Home_Screen extends AppCompatActivity {
                 return true;
             }
         });
-
     }
 
     public void openSpecificSubjectScreen(View view){

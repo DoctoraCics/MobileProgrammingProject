@@ -24,8 +24,8 @@ public class Add_Subject_Screen extends AppCompatActivity {
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle toggling;
     private Toolbar toolbar;
-    NavigationView navigationView;
-    Intent intent;
+    private NavigationView navigationView;
+    private Intent intent;
 
     private androidDBHandlerSqlLite db;
     private TextView enterSubj;
@@ -49,7 +49,6 @@ public class Add_Subject_Screen extends AppCompatActivity {
 
         drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
         toggling =  new ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close);
-
         drawerLayout.addDrawerListener(toggling);
         toggling.syncState();
 

@@ -27,22 +27,20 @@ public class Specific_Subject_Screen extends AppCompatActivity {
     private ActionBarDrawerToggle toggling;
     private Toolbar toolbar;
 
-    NavigationView navigationView;
+    private NavigationView navigationView;
 
-    Intent intent;
+    private Intent intent;
     private androidDBHandlerSqlLite db;
-    SharedPreferences shareDPreferences;
-    SharedPreferences.Editor noteSubjectEdit;
-    TextView enterNotes;
+    private SharedPreferences shareDPreferences;
+    private SharedPreferences.Editor noteSubjectEdit;
 
-    private Button button;
+    private TextView enterNotes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_specific_subject_screen);
         intent = getIntent();
-        Toast.makeText(getApplicationContext(),"Subject Id: " + intent.getIntExtra(Home_Screen.SUBJECT_ID, 0), Toast.LENGTH_SHORT).show();
         this.enterNotes = (TextView) findViewById(R.id.enterNotes);
 
         toolbar = (Toolbar) findViewById(R.id.nav_action);
@@ -55,7 +53,9 @@ public class Specific_Subject_Screen extends AppCompatActivity {
         toggling.syncState();
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         readNotes();
+        debugToast();
 
 //        try{
 //            ArrayList subjectList = db.selectStudentsUnderSubject(SubjectId);
@@ -162,5 +162,9 @@ public class Specific_Subject_Screen extends AppCompatActivity {
         Intent intent = new Intent(this, Home_Screen.class);
         startActivity(intent);
         finish();
+    }
+
+    public void debugToast(){
+        Toast.makeText(getApplicationContext(),"Subject Id: " + intent.getIntExtra(Home_Screen.SUBJECT_ID, 0), Toast.LENGTH_SHORT).show();
     }
 }

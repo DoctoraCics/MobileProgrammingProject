@@ -23,8 +23,8 @@ public class Subject_Screen extends AppCompatActivity {
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle toggling;
     private Toolbar toolbar;
-    NavigationView navigationView;
-    Intent intent;
+    private NavigationView navigationView;
+    private Intent intent;
 
     private TextView enterSubj;
     private TextView enterCode;
@@ -32,7 +32,6 @@ public class Subject_Screen extends AppCompatActivity {
     private androidDBHandlerSqlLite db;
 
     private Button button;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,14 +81,6 @@ public class Subject_Screen extends AppCompatActivity {
             }
         });
 
-        button = (Button) findViewById(R.id.addSubject);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openAddSubjectScreen();
-            }
-        });
-
         button = (Button) findViewById(R.id.updateSubject);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,10 +88,9 @@ public class Subject_Screen extends AppCompatActivity {
                 openUpdateSubjectScreen();
             }
         });
-
     }
 
-    public void openAddSubjectScreen(){
+    public void openAddSubjectScreen(View view){
         Intent intent = new Intent(this, Add_Subject_Screen.class);
         startActivity(intent);
     }

@@ -167,4 +167,9 @@ public class Specific_Subject_Screen extends AppCompatActivity {
     public void debugToast(){
         Toast.makeText(getApplicationContext(),"Subject Id: " + intent.getIntExtra(Home_Screen.SUBJECT_ID, 0), Toast.LENGTH_SHORT).show();
     }
+
+    @Override
+    public void onBackPressed(){
+
+    }
 }

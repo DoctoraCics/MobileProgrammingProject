@@ -7,7 +7,6 @@ import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteStatement;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Random;
 
 public class androidDBHandlerSqlLite extends SQLiteOpenHelper {
@@ -15,6 +14,10 @@ public class androidDBHandlerSqlLite extends SQLiteOpenHelper {
     private static final String DB_NAME = "teacherDB";
     private static final int DB_VERSION = 1;
     private static String dbPath;
+
+    private static final int MIN_NUMBER = 0;
+    private static final int MAX_NUMBER = 100000000;
+    private static final int MAX_TRIES = 5;
 
     //Under Subject table
     private static final String SUBJECT_TABLE = "Subject_Table";
@@ -30,8 +33,6 @@ public class androidDBHandlerSqlLite extends SQLiteOpenHelper {
     private static final String STUDENT_GRADE = "Student_Grade";
     private static final String STUDENT_STATUS = "Student_Status";
     private static final String STUDENT_SUBJECT_ID = "Student_Subject_Id";
-
-
 
     public androidDBHandlerSqlLite(Context context) { super(context, DB_NAME, null, DB_VERSION); }
     @Override
@@ -58,9 +59,7 @@ public class androidDBHandlerSqlLite extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + DB_NAME);
-        // Create tables again
         onCreate(sqLiteDatabase);
-
     }
 
     @Override
@@ -95,7 +94,7 @@ public class androidDBHandlerSqlLite extends SQLiteOpenHelper {
             String sqlStmt = String.format(unformattedsqlStmt, Subject_Id);
             Cursor cursor = db.rawQuery(sqlStmt, null);
             while(cursor.moveToNext()){
-                int StudentNum = Integer.parseInt(cursor.getString(0));
+                int StudentNum = cursor.getInt(0);
                 double StudentGrade = cursor.getDouble(1);
                 String SubjectName = cursor.getString(2);
                 String StudentStatus = cursor.getString(3);
@@ -166,7 +165,7 @@ public class androidDBHandlerSqlLite extends SQLiteOpenHelper {
     public boolean enrollStudent(int subjectId, String studentName, float studentGrade, String studentStatus) {
         try {
             SQLiteDatabase db = this.getWritableDatabase();
-            int randomId = generateRandomId(0, 100000);
+            int randomId = generateRandomId(MIN_NUMBER, MAX_NUMBER);
 
             String sqlStmt = "INSERT INTO Student_Table (Student_Number, Student_Name, Student_Grade, Student_Status, Subject_Id)\n"
                     + "VALUES (?, ?, ?, ?, ?);";
@@ -189,6 +188,10 @@ public class androidDBHandlerSqlLite extends SQLiteOpenHelper {
 
 
     public boolean insertSubject(String SubjectName, String SubjectCode, String SubjectStatus) {
+        boolean inserted = false;
+        int tries = 0;
+
+        while(!inserted && !(tries > MAX_TRIES)){
         try {
             SQLiteDatabase db = this.getWritableDatabase();
             int randomId = generateRandomId(0, 100000);
@@ -204,11 +207,13 @@ public class androidDBHandlerSqlLite extends SQLiteOpenHelper {
 
             stmt.executeInsert();
             stmt.close();
-            return true;
+            inserted = true;
         } catch (Exception e) {
             e.printStackTrace();
-            return false;
+            tries++;
         }
+        }
+        return inserted;
     }
 
     public boolean updateSubject(int subjectId, String SubjectName, String SubjectCode, String SubjectStatus) {

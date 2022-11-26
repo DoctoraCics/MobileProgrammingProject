@@ -60,7 +60,8 @@
         <Spinner
             android:id="@+id/spinnerStatus"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            app:backgroundTint="#FFFFFF"/>
 
         <TextView
             android:id="@+id/textView5"
@@ -72,12 +73,14 @@
         <Spinner
             android:id="@+id/spinnerSubject"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            app:backgroundTint="#FFFFFF"/>
 
         <Button
             android:id="@+id/updateStudent"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:text="Update Student"
             app:backgroundTint="#F5881F" />
 

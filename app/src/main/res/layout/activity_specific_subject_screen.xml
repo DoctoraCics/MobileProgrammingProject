@@ -138,7 +138,7 @@
                     android:padding="10sp"
                     android:text="Update"
                     android:textSize="12sp"
-                    app:backgroundTint="#2196F3" />
+                    app:backgroundTint="#16A62E" />
 
                 <Button
                     android:id="@+id/delete2"
@@ -163,7 +163,7 @@
             android:backgroundTint="@color/white"
             android:ems="10"
             android:gravity="start|top"
-            android:hint="Enter Notes"
+            android:hint="Enter subject notes"
             android:inputType="textMultiLine"
             android:textColorHint="@color/white" />
 

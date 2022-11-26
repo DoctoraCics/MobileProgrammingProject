@@ -127,7 +127,7 @@
                             android:padding="10sp"
                             android:text="Update"
                             android:textSize="12sp"
-                            app:backgroundTint="#2196F3" />
+                            app:backgroundTint="#16A62E" />
 
                         <Button
                             android:id="@+id/deleteSubject"

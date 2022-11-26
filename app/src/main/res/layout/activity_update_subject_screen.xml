@@ -60,14 +60,16 @@
         <Spinner
             android:id="@+id/spinner2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            app:backgroundTint="#FFFFFF"/>
 
         <Button
             android:id="@+id/updateSubj"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:backgroundTint="#F5881F"
-            android:text="Update Subject" />
+            android:layout_gravity="center"
+            android:text="Update Subject"
+            app:backgroundTint="#F5881F" />
 
     </LinearLayout>
 

@@ -23,8 +23,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="The Developers"
-            android:textColor="#F1EEEE"
+            android:text="DoSanTam Developers:"
+            android:textColor="#FFFFFF"
             android:textSize="34sp" />
 
         <LinearLayout
@@ -34,24 +34,27 @@
 
             <Button
                 android:id="@+id/feivel"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:backgroundTint="#FF9800"
-                android:text="Feivel Doctora" />
+                android:layout_gravity="center"
+                android:text="Feivel Doctora"
+                app:backgroundTint="#FF9800" />
 
             <Button
                 android:id="@+id/jez"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:backgroundTint="#FF9800"
-                android:text="John Eleazar Sandi" />
+                android:layout_gravity="center"
+                android:text="John Eleazar Sandi"
+                app:backgroundTint="#FF9800" />
 
             <Button
                 android:id="@+id/joseph"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:backgroundTint="#FF9800"
-                android:text="Joseph Gabriel Tamayo" />
+                android:layout_gravity="center"
+                android:text="Joseph Gabriel Tamayo"
+                app:backgroundTint="#FF9800" />
         </LinearLayout>
 
     </LinearLayout>

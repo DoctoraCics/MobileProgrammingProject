@@ -66,13 +66,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:entries="@array/subjectStatusOptions"
-            />
+            app:backgroundTint="#FFFFFF" />
 
 
         <Button
             android:id="@+id/addSubj"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:onClick="addSubjectDB"
             android:text="Add Subject"
             app:backgroundTint="#F5881F" />

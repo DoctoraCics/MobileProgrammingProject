@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="subjectStatusOptions">
-        <item>Home</item>
-        <item>Subject</item>
-        <item>About</item>
-        <item>Exit</item>
+        <item>Passed</item>
+        <item>Failed</item>
+        <item>INC</item>
+        <item>IN P</item>
+        <item>FA</item>
     </string-array>
 </resources>

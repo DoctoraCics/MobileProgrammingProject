@@ -32,6 +32,7 @@
             android:ems="10"
             android:hint="Enter Name"
             android:inputType="textPersonName"
+            android:minHeight="48dp"
             android:textColorHint="#F6F6F6" />
 
         <TextView
@@ -48,6 +49,7 @@
             android:ems="10"
             android:hint="Enter Grade"
             android:inputType="textPersonName"
+            android:minHeight="48dp"
             android:textColorHint="#FAF8F8" />
 
         <TextView
@@ -57,11 +59,22 @@
             android:textColor="@color/white"
             android:text="Status" />
 
-        <Spinner
-            android:id="@+id/spinnerStatus"
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:backgroundTint="#FFFFFF"/>
+            app:strokeWidth="1dp"
+            app:strokeColor="@color/black"
+            app:cardCornerRadius="4dp">
+
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/spinnerStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:entries="@array/statusOptions"
+                android:minHeight="48dp"
+                android:padding="10dp" />
+
+        </com.google.android.material.card.MaterialCardView>
 
         <TextView
             android:id="@+id/textView5"
@@ -70,11 +83,22 @@
             android:textColor="@color/white"
             android:text="Subject" />
 
-        <Spinner
-            android:id="@+id/spinnerSubject"
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:backgroundTint="#FFFFFF"/>
+            app:strokeWidth="1dp"
+            app:strokeColor="@color/black"
+            app:cardCornerRadius="4dp">
+
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/spinnerSubject"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:entries="@array/subjectOptions"
+                android:minHeight="48dp"
+                android:padding="10dp" />
+
+        </com.google.android.material.card.MaterialCardView>
 
         <Button
             android:id="@+id/updateStudent"

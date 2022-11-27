@@ -26,146 +26,156 @@
             android:text="Enroll Student"
             app:backgroundTint="#F5881F" />
 
-        <TableLayout
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@android:color/white">
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            app:cardBackgroundColor="#FFFFFF"
+            app:cardCornerRadius="5dp"
+            app:cardElevation="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" >
 
-            <!-- Table Heading -->
-
-            <TableRow android:background="#F5881F">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="4"
-                    android:gravity="center_horizontal"
-                    android:padding="10sp"
-                    android:text="@string/column_name"
-                    android:textColor="@android:color/white"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="4"
-                    android:gravity="center_horizontal"
-                    android:padding="10sp"
-                    android:text="@string/column_grade"
-                    android:textColor="@android:color/white"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="4"
-                    android:gravity="center_horizontal"
-                    android:padding="10sp"
-                    android:text="@string/column_subject"
-                    android:textColor="@android:color/white"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="4"
-                    android:gravity="center_horizontal"
-                    android:padding="10sp"
-                    android:text="@string/column_status"
-                    android:textColor="@android:color/white"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="4"
-                    android:gravity="center_horizontal"
-                    android:padding="10sp"
-                    android:text="@string/column_action"
-                    android:textColor="@android:color/white"
-                    android:textSize="14sp" />
-
-
-            </TableRow>
-
-            <!-- Table Data -->
-
-            <TableRow android:layout_height="98dp">
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1.5"
-                    android:gravity="center_horizontal"
-                    android:padding="10sp"
-                    android:text="@string/row_name"
-                    android:textSize="12sp" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1.5"
-                    android:gravity="center_horizontal"
-                    android:padding="10sp"
-                    android:text="@string/row_grade"
-                    android:textSize="12sp" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1.5"
-                    android:gravity="center_horizontal"
-                    android:padding="10sp"
-                    android:text="@string/row_subject"
-                    android:textSize="12sp" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1.5"
-                    android:gravity="center_horizontal"
-                    android:padding="10sp"
-                    android:text="@string/row_status"
-                    android:textSize="12sp" />
-
-                <Button
-                    android:id="@+id/update2"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1.5"
-                    android:gravity="center_horizontal"
-                    android:onClick="updateStudentScreen"
-                    android:padding="10sp"
-                    android:text="Update"
-                    android:textSize="12sp"
-                    app:backgroundTint="#16A62E" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
                 <Button
                     android:id="@+id/delete2"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1.5"
-                    android:gravity="center_horizontal"
-                    android:padding="10sp"
+                    android:layout_width="74dp"
+                    android:layout_height="48dp"
                     android:text="Delete"
-                    android:textSize="12sp"
-                    app:backgroundTint="#F44336" />
+                    android:textSize="9dp"
+                    app:backgroundTint="#FF0000 "
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.95"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="1.0" />
 
-            </TableRow>
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:padding="5dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_baseline_person_24">
+                </ImageView>
 
 
-        </TableLayout>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/textView14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="72dp"
+                    android:text="@array/Subject"
+                    android:textColor="@color/tanAccent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/textView12"
+                    app:layout_constraintHorizontal_bias="0.779"
+                    app:layout_constraintStart_toEndOf="@+id/imageView3"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.506" />
 
-        <EditText
-            android:id="@+id/enterNotes"
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/textView15"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="@array/Status"
+                    android:textColor="@color/tanAccent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.59"
+                    app:layout_constraintStart_toEndOf="@+id/imageView3"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.506" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/textView16"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:text="@array/Grade"
+                    android:textColor="@color/tanAccent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/textView11"
+                    app:layout_constraintHorizontal_bias="0.29"
+                    app:layout_constraintStart_toEndOf="@+id/imageView3"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/textView17"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:text="@array/Name"
+                    android:textColor="@color/tanAccent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/textView11"
+                    app:layout_constraintHorizontal_bias="0.29"
+                    app:layout_constraintStart_toEndOf="@+id/imageView3"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.049" />
+
+                <Button
+                    android:id="@+id/button5"
+                    android:layout_width="74dp"
+                    android:layout_height="48dp"
+                    android:text="Update"
+                    android:textSize="9dp"
+                    app:backgroundTint="#4CAF50"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.953"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.076" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="294dp"
-            android:backgroundTint="@color/white"
-            android:ems="10"
-            android:gravity="start|top"
-            android:hint="Enter subject notes"
-            android:inputType="textMultiLine"
-            android:textColorHint="@color/white" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            app:cardBackgroundColor="#FFFFFF"
+            app:cardCornerRadius="5dp"
+            app:cardElevation="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" >
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <EditText
+                    android:id="@+id/enterNotes"
+                    android:layout_width="match_parent"
+                    android:layout_height="294dp"
+
+                    android:ems="10"
+                    android:gravity="start|top"
+                    android:hint="Enter subject notes"
+                    android:inputType="textMultiLine"
+                     />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
 
         <Button
             android:id="@+id/save"

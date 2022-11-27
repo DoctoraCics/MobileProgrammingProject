@@ -32,6 +32,7 @@
             android:ems="10"
             android:hint="Enter Name"
             android:inputType="textPersonName"
+            android:minHeight="48dp"
             android:textColor="#1E000000"
             android:textColorHint="#FFFFFF" />
 
@@ -49,6 +50,7 @@
             android:ems="10"
             android:hint="Enter Grade"
             android:inputType="textPersonName"
+            android:minHeight="48dp"
             android:textColor="#FFFFFF"
             android:textColorHint="#E4E3E3" />
 
@@ -59,11 +61,22 @@
             android:text="Status"
             android:textColor="@color/white" />
 
-        <Spinner
-            android:id="@+id/statusSpinner"
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:backgroundTint="#FFFFFF"/>
+            app:strokeWidth="1dp"
+            app:strokeColor="@color/black"
+            app:cardCornerRadius="4dp">
+
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/statusSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:entries="@array/statusOptions"
+                android:minHeight="48dp"
+                android:padding="10dp" />
+
+        </com.google.android.material.card.MaterialCardView>
 
         <TextView
             android:id="@+id/textView5"
@@ -72,11 +85,22 @@
             android:text="Subject"
             android:textColor="@color/white" />
 
-        <Spinner
-            android:id="@+id/subjectSpinner"
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:backgroundTint="#FFFFFF"/>
+            app:strokeWidth="1dp"
+            app:strokeColor="@color/black"
+            app:cardCornerRadius="4dp">
+
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/subjectSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:entries="@array/subjectOptions"
+                android:minHeight="48dp"
+                android:padding="10dp" />
+
+        </com.google.android.material.card.MaterialCardView>
 
         <Button
             android:id="@+id/enrollStudent"

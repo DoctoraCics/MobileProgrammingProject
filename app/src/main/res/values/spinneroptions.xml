@@ -1,10 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="subjectStatusOptions">
+    <string-array name="statusOptions">
+        <item>Select</item>
         <item>Passed</item>
         <item>Failed</item>
         <item>INC</item>
-        <item>IN P</item>
+        <item>INP</item>
         <item>FA</item>
+    </string-array>
+
+    <string-array name="gradeOptions">
+        <item>Select</item>
+        <item>1.0</item>
+        <item>1.5</item>
+        <item>2.0</item>
+        <item>2.5</item>
+        <item>3.0</item>
+        <item>5.0</item>
+    </string-array>
+
+    <string-array name="subjectOptions">
+        <item>Select</item>
+        <item>FILIPINO</item>
+        <item>SCIENCE</item>
+        <item>MATH</item>
+        <item>ENGLISH</item>
+        <item>HISTORY</item>
+        <item>PE</item>
+        <item>THEOLOGY</item>
+        <item>ELECTIVES</item>
     </string-array>
 </resources>

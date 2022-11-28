@@ -51,42 +51,16 @@
             </ImageView>
 
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/textView11"
+            <TextView
+                android:id="@+id/subjectdispName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@array/Code"
-                android:textColor="@color/tanAccent"
+                android:layout_marginStart="24dp"
+                android:text="TextView"
+                android:textColor="#FFFFFF"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/textView12"
-                app:layout_constraintHorizontal_bias="0.779"
-                app:layout_constraintStart_toEndOf="@+id/imageView2"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.506" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/textView12"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
-                android:text="@array/Status"
-                android:textColor="@color/tanAccent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.59"
-                app:layout_constraintStart_toEndOf="@+id/imageView2"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.506" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/textView13"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@array/Subject"
-                android:textColor="@color/tanAccent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/textView11"
-                app:layout_constraintHorizontal_bias="0.29"
+                app:layout_constraintEnd_toStartOf="@+id/updateSubject"
+                app:layout_constraintHorizontal_bias="0.354"
                 app:layout_constraintStart_toEndOf="@+id/imageView2"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.506" />

@@ -5,29 +5,36 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.mobileprogrammingproject.model.Subject;
+import com.example.mobileprogrammingproject.model.RecyclerInterface;
+import com.example.mobileprogrammingproject.model.Student;
 import com.example.mobileprogrammingproject.model.androidDBHandlerSqlLite;
+import com.example.mobileprogrammingproject.model.recyclerViews.studentUnderSubjectRecycler;
+import com.example.mobileprogrammingproject.model.recyclerViews.subjectRecyclerView;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
 
-public class Specific_Subject_Screen extends AppCompatActivity {
+public class Specific_Subject_Screen extends AppCompatActivity implements RecyclerInterface {
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle toggling;
     private Toolbar toolbar;
 
     private NavigationView navigationView;
+    private RecyclerView studentRecycler;
+
+    private ArrayList<Student> studentList;
+    private int Subject_Id;
 
     private Intent intent;
     private androidDBHandlerSqlLite db;
@@ -42,12 +49,21 @@ public class Specific_Subject_Screen extends AppCompatActivity {
         setContentView(R.layout.activity_specific_subject_screen);
         intent = getIntent();
         this.enterNotes = (TextView) findViewById(R.id.enterNotes);
+        this.studentRecycler = (RecyclerView) findViewById(R.id.studentRecycler);
+        this.db = new androidDBHandlerSqlLite(this);
+
+        this.Subject_Id = intent.getIntExtra("SUBJECT_ID", -1);
+        this.studentList = db.selectStudentsUnderSubject(Subject_Id);
+
+        studentUnderSubjectRecycler studentAdaptor = new studentUnderSubjectRecycler(this, studentList, Subject_Id, this);
+        studentRecycler.setAdapter(studentAdaptor);
+        studentRecycler.setLayoutManager(new LinearLayoutManager(this));
 
         toolbar = (Toolbar) findViewById(R.id.nav_action);
         setSupportActionBar(toolbar);
 
         drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
-        toggling =  new ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close);
+        toggling = new ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close);
 
         drawerLayout.addDrawerListener(toggling);
         toggling.syncState();
@@ -71,22 +87,22 @@ public class Specific_Subject_Screen extends AppCompatActivity {
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()){
+                switch (item.getItemId()) {
                     case R.id.home:
                         intent = new Intent(Specific_Subject_Screen.this, Home_Screen.class);
-                        intent.removeExtra(Home_Screen.SUBJECT_ID);
+                        removeId();
                         startActivity(intent);
                         finish();
                         return true;
                     case R.id.about:
                         intent = new Intent(Specific_Subject_Screen.this, About_Screen.class);
-                        intent.removeExtra(Home_Screen.SUBJECT_ID);
+                        removeId();
                         startActivity(intent);
                         finish();
                         return true;
                     case R.id.subjects:
                         intent = new Intent(Specific_Subject_Screen.this, Subject_Screen.class);
-                        intent.removeExtra(Home_Screen.SUBJECT_ID);
+                        removeId();
                         startActivity(intent);
                         finish();
                         return true;
@@ -97,79 +113,92 @@ public class Specific_Subject_Screen extends AppCompatActivity {
             }
         });
     }
-    public void enrollStudentScreen(View view){
+
+    public void removeId() {
+        try {
+            intent.removeExtra("SUBJECT_ID");
+        } catch (Exception e) {
+        }
+    }
+
+    public void enrollStudentScreen(View view) {
         Intent intent = new Intent(this, Enroll_Student_Screen.class);
         startActivity(intent);
     }
 
-    public void saveNotes(View view){
-        try{
-            Toast.makeText(getApplicationContext(),"Notes Saved!", Toast.LENGTH_SHORT).show();
-            SharedPreferences sharedPreferences = getSharedPreferences("NotePreferences",MODE_PRIVATE);
+    public void saveNotes(View view) {
+        try {
+            Toast.makeText(getApplicationContext(), "Notes Saved!", Toast.LENGTH_SHORT).show();
+            SharedPreferences sharedPreferences = getSharedPreferences("NotePreferences", MODE_PRIVATE);
 
             SharedPreferences.Editor myEdit = sharedPreferences.edit();
             int subId = intent.getIntExtra(Home_Screen.SUBJECT_ID, 0);
             myEdit.putString(String.valueOf(subId), enterNotes.getText().toString());
             myEdit.commit();
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
-            Toast.makeText(getApplicationContext(),"Notes Failed to Save", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Notes Failed to Save", Toast.LENGTH_SHORT).show();
         }
     }
 
-    public void readNotes(){
+    public void readNotes() {
         SharedPreferences sharedPreferences = getSharedPreferences("NotePreferences", MODE_APPEND);
         int subId = intent.getIntExtra(Home_Screen.SUBJECT_ID, 0);
         String s1 = sharedPreferences.getString(String.valueOf(subId), "");
         enterNotes.setText(s1);
     }
 
-    public void deleteNotes(View view){
+    public void deleteNotes(View view) {
         try {
-            Toast.makeText(getApplicationContext(),"Notes Cleared!", Toast.LENGTH_SHORT).show();
-            SharedPreferences sharedPreferences = getSharedPreferences("NotePreferences",MODE_PRIVATE);
+            Toast.makeText(getApplicationContext(), "Notes Cleared!", Toast.LENGTH_SHORT).show();
+            SharedPreferences sharedPreferences = getSharedPreferences("NotePreferences", MODE_PRIVATE);
 
             SharedPreferences.Editor myEdit = sharedPreferences.edit();
             int subId = intent.getIntExtra(Home_Screen.SUBJECT_ID, 0);
             myEdit.remove(String.valueOf(subId));
             enterNotes.setText("");
             myEdit.commit();
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             Toast.makeText(getApplicationContext(), "Deletion Failed", Toast.LENGTH_SHORT).show();
         }
     }
 
-    public void updateStudentScreen(View view){
+    public void updateStudentScreen(View view) {
         Intent intent = new Intent(this, Update_Student_Screen.class);
         startActivity(intent);
     }
 
-    public boolean onOptionsItemSelected(MenuItem item)
-    {
-        if(toggling.onOptionsItemSelected(item))
-        {
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (toggling.onOptionsItemSelected(item)) {
             return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
 
-    public void goBacktoHome(){
+    public void goBacktoHome() {
         Intent intent = new Intent(this, Home_Screen.class);
         startActivity(intent);
         finish();
     }
 
-    public void debugToast(){
-        Toast.makeText(getApplicationContext(),"Subject Id: " + intent.getIntExtra(Home_Screen.SUBJECT_ID, 0), Toast.LENGTH_SHORT).show();
+    public void debugToast() {
+        Toast.makeText(getApplicationContext(), "Subject Id: " + intent.getIntExtra(Home_Screen.SUBJECT_ID, 0), Toast.LENGTH_SHORT).show();
     }
 
     @Override
-    public void onBackPressed(){
+    public void onBackPressed() {
+
+    }
+
+    @Override
+    public void onUpdateClick(int position) {
+
+    }
+
+    @Override
+    public void onDeleteCLick(int position) {
 
     }
 }

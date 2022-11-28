@@ -11,7 +11,6 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -46,19 +45,20 @@ public class Home_Screen extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
-        toggling =  new ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close);
+        toggling = new ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close);
 
         drawerLayout.addDrawerListener(toggling);
         toggling.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        try{
+        try {
             ArrayList subjectList = db.selectSubjects();
             ArrayAdapter<Subject> displaySubjectList = new ArrayAdapter<Subject>(
                     getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, subjectList);
-            displaySubjectList.setDropDownViewResource( android.R.layout.simple_spinner_dropdown_item
+            displaySubjectList.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item
             );
-            spinnerHome.setAdapter(displaySubjectList);} catch (Exception e){
+            spinnerHome.setAdapter(displaySubjectList);
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -66,48 +66,55 @@ public class Home_Screen extends AppCompatActivity {
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()){
+                switch (item.getItemId()) {
                     case R.id.home:
-                        Toast.makeText(getApplicationContext(),"You are already at the home screen", Toast.LENGTH_SHORT).show();
-                        intent.removeExtra(Home_Screen.SUBJECT_ID);
+                        Toast.makeText(getApplicationContext(), "You are already at the home screen", Toast.LENGTH_SHORT).show();
+                        removeId();
                         return true;
                     case R.id.subjects:
                         intent = new Intent(Home_Screen.this, Subject_Screen.class);
-                        intent.removeExtra(Home_Screen.SUBJECT_ID);
+                        removeId();
                         startActivity(intent);
                         finish();
                         return true;
                     case R.id.about:
                         intent = new Intent(Home_Screen.this, About_Screen.class);
-                        intent.removeExtra(Home_Screen.SUBJECT_ID);
+                        removeId();
                         startActivity(intent);
                         finish();
                         return true;
                     case R.id.exit:
                         System.exit(0);
+                        return true;
                 }
                 return true;
             }
         });
     }
 
-    public void openSpecificSubjectScreen(View view){
-        Subject selectedSUbject = (Subject) spinnerHome.getSelectedItem();
-        if(selectedSUbject != null){
-            int SelectedSubjectId = selectedSUbject.getSubjectId();
-            Intent i = new Intent(this, Specific_Subject_Screen.class);
-            i.putExtra(SUBJECT_ID, SelectedSubjectId);
-            startActivity(i);
-        }
-        else{
-            Toast.makeText(getApplicationContext(),"Nothing Selected", Toast.LENGTH_SHORT).show();
+    public void removeId() {
+        try{
+            intent.removeExtra(Home_Screen.SUBJECT_ID);
+        }catch (Exception e){
+            e.printStackTrace();
         }
     }
 
-    public boolean onOptionsItemSelected(MenuItem item)
-    {
-        if(toggling.onOptionsItemSelected(item))
-        {
+    public void openSpecificSubjectScreen(View view) {
+        Subject selectedSUbject = (Subject) spinnerHome.getSelectedItem();
+        if (selectedSUbject != null) {
+            int SelectedSubjectId = selectedSUbject.getSubjectId();
+            Intent i = new Intent(this, Specific_Subject_Screen.class);
+            i.putExtra("SUBJECT_ID", SelectedSubjectId);
+            startActivity(i);
+            finish();
+        } else {
+            Toast.makeText(getApplicationContext(), "Nothing Selected", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (toggling.onOptionsItemSelected(item)) {
             return true;
         }
 

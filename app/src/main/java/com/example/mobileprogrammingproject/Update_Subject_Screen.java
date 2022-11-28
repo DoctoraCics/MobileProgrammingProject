@@ -11,17 +11,33 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.mobileprogrammingproject.model.androidDBHandlerSqlLite;
 import com.google.android.material.navigation.NavigationView;
 
 public class Update_Subject_Screen extends AppCompatActivity {
+
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle toggling;
     private Toolbar toolbar;
     NavigationView navigationView;
     Intent intent;
 
+    private androidDBHandlerSqlLite db;
+
+    private int subjectId;
+    private String subjectName;
+    private String subjectCode;
+
+    private TextView textViewSubjectName;
+    private TextView textViewSubjectCode;
+    private Spinner spinner2;
+
     private Button button;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,11 +45,29 @@ public class Update_Subject_Screen extends AppCompatActivity {
 
         intent = getIntent();
 
+        db = new androidDBHandlerSqlLite(this);
+
+        this.textViewSubjectName = (TextView) findViewById(R.id.subjectname);
+        this.textViewSubjectCode = (TextView) findViewById(R.id.subjectCode);
+        this.spinner2 = (Spinner) findViewById(R.id.spinner2);
+
+        this.subjectId = intent.getIntExtra("ID", -1);
+
+        if (subjectId == -1) {
+            updateSubjectScreen();
+        }
+
+        this.subjectName = intent.getStringExtra("SUBJECTNAME");
+        this.subjectCode = intent.getStringExtra("SUBJECTCODE");
+
+        textViewSubjectName.setText(subjectName);
+        textViewSubjectCode.setText(subjectCode);
+
         toolbar = (Toolbar) findViewById(R.id.nav_action);
         setSupportActionBar(toolbar);
 
         drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
-        toggling =  new ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close);
+        toggling = new ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close);
 
         drawerLayout.addDrawerListener(toggling);
         toggling.syncState();
@@ -44,7 +78,7 @@ public class Update_Subject_Screen extends AppCompatActivity {
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()){
+                switch (item.getItemId()) {
                     case R.id.home:
                         intent = new Intent(Update_Subject_Screen.this, Home_Screen.class);
                         startActivity(intent);
@@ -75,15 +109,34 @@ public class Update_Subject_Screen extends AppCompatActivity {
             }
         });
     }
-    public void updateSubjectScreen(){
-        Intent intent = new Intent(this, Subject_Screen.class);
-        startActivity(intent);
+
+    public void removeExtras(){
+        intent.removeExtra("ID");
+        intent.removeExtra("SUBJECT_NAME");
+        intent.removeExtra("SUBJECT_CODE");
     }
 
-    public boolean onOptionsItemSelected(MenuItem item)
-    {
-        if(toggling.onOptionsItemSelected(item))
-        {
+    public void updateSubjectScreen() {
+
+        if (db.updateSubject(subjectId, textViewSubjectName.getText().toString(), textViewSubjectCode.getText().toString(), spinner2.getSelectedItem().toString())) {
+            removeExtras();
+            Intent intent = new Intent(this, Subject_Screen.class);
+            startActivity(intent);
+            finish();
+        } else {
+            Toast.makeText(getApplicationContext(), "Update Failed!", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void onBackPressed() {
+        removeExtras();
+        Intent intent = new Intent(this, Subject_Screen.class);
+        startActivity(intent);
+        finish();
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (toggling.onOptionsItemSelected(item)) {
             return true;
         }
 

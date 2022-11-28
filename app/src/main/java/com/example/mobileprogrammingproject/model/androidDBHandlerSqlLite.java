@@ -47,12 +47,13 @@ public class androidDBHandlerSqlLite extends SQLiteOpenHelper {
                     ")";
 
             sqLiteDatabase.execSQL(CREATE_TABLE);
-        CREATE_TABLE = "CREATE TABLE "  + STUDENT_TABLE + "("
-                    + STUDENT_NUMBER + "INTEGER PRIMARY KEY,"
-                    + STUDENT_NAME + "TEXT NOT NULL,"
-                    + STUDENT_GRADE + "REAL,"
-                    + STUDENT_STATUS + "TEXT,"
-                    + STUDENT_SUBJECT_ID +"INTEGER REFERENCES " + SUBJECT_TABLE + ")";
+        CREATE_TABLE = "CREATE TABLE "  + STUDENT_TABLE + " ("
+                    + STUDENT_NUMBER + " INTEGER PRIMARY KEY,"
+                    + STUDENT_NAME + " TEXT NOT NULL,"
+                    + STUDENT_GRADE + " REAL,"
+                    + STUDENT_STATUS + " TEXT,"
+                    + STUDENT_SUBJECT_ID +" INTEGER REFERENCES " + SUBJECT_TABLE + ")";
+        System.out.println(CREATE_TABLE);
             sqLiteDatabase.execSQL(CREATE_TABLE);
     }
 
@@ -89,7 +90,7 @@ public class androidDBHandlerSqlLite extends SQLiteOpenHelper {
             String unformattedsqlStmt = "SELECT Student_Table.Student_Number, Student_Table.Student_Grade, Subject_Table.Subject_Name, \n"
                     + "Student_Table.Student_Status, Student_Table.Student_Name\n"
                     + "FROM Student_Table \n"
-                    + "JOIN Subject_Table ON Student_Table.Subject_Id = Subject_Table.Subject_Id WHERE Student_Table.Subject_Id = %d;";
+                    + "JOIN Subject_Table ON Student_Table.Student_Subject_Id = Subject_Table.Subject_Id WHERE Student_Table.Student_Subject_Id = %d;";
 
             String sqlStmt = String.format(unformattedsqlStmt, Subject_Id);
             Cursor cursor = db.rawQuery(sqlStmt, null);
@@ -114,10 +115,11 @@ public class androidDBHandlerSqlLite extends SQLiteOpenHelper {
         try {
             ArrayList<Subject>subjectList = new ArrayList<>();
             SQLiteDatabase db = this.getWritableDatabase();
-            String sqlStmt = "SELECT Subject_Id, Subject_Name FROM Subject_Table;";
+            String sqlStmt = "SELECT * FROM Subject_Table;";
             Cursor cursor = db.rawQuery(sqlStmt, null);
             while (cursor.moveToNext()){
-                subjectList.add(new Subject(cursor.getInt(0), cursor.getString(1)));
+                subjectList.add(new Subject(cursor.getInt(0), cursor.getString(1)
+                ,cursor.getString(2),cursor.getString(3)));
             }
             return subjectList;
         } catch (Exception e) {
@@ -130,7 +132,7 @@ public class androidDBHandlerSqlLite extends SQLiteOpenHelper {
         try {
             SQLiteDatabase db = this.getWritableDatabase();
 
-            String sqlStmt = "DELETE FROM Student_Table where Subject_Id=?";
+            String sqlStmt = "DELETE FROM Student_Table where Student_Subject_Id=?";
             SQLiteStatement stmt = db.compileStatement(sqlStmt);
             stmt.bindLong(1, subjectId);
             stmt.executeUpdateDelete();
@@ -184,8 +186,6 @@ public class androidDBHandlerSqlLite extends SQLiteOpenHelper {
             return false;
         }
     }
-
-
 
     public boolean insertSubject(String SubjectName, String SubjectCode, String SubjectStatus) {
         boolean inserted = false;

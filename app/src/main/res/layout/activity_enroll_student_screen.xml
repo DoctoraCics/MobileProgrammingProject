@@ -72,7 +72,7 @@
                 android:id="@+id/statusSpinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:entries="@array/statusOptions"
+                android:entries="@array/subjectstatus"
                 android:minHeight="48dp"
                 android:padding="10dp" />
 

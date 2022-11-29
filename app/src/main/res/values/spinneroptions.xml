@@ -9,6 +9,13 @@
         <item>FA</item>
     </string-array>
 
+    <string-array name="subjectstatus">
+        <item>Select</item>
+        <item>On going</item>
+        <item>Finished</item>
+        <item>Not Available</item>
+    </string-array>
+
     <string-array name="gradeOptions">
         <item>Select</item>
         <item>1.0</item>

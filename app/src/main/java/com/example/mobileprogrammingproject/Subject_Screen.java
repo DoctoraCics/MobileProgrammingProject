@@ -118,12 +118,12 @@ public class Subject_Screen extends AppCompatActivity implements RecyclerInterfa
         if (toggling.onOptionsItemSelected(item)) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
     @Override
     public void onUpdateClick(int position) {
+
         Intent intent = new Intent(this, Update_Subject_Screen.class);
         intent.putExtra("ID", retrievedSubj.get(position).getSubjectId());
         intent.putExtra("SUBJECTNAME", retrievedSubj.get(position).getName());
@@ -135,6 +135,7 @@ public class Subject_Screen extends AppCompatActivity implements RecyclerInterfa
 
     @Override
     public void onDeleteCLick(int position) {
+
         new AlertDialog.Builder(this)
                 .setTitle("Deletion")
                 .setMessage("Are you sure you want to delete this subject?")
@@ -145,7 +146,6 @@ public class Subject_Screen extends AppCompatActivity implements RecyclerInterfa
                         deleteSubject(position);
                     }
                 }).create().show();
-
     }
 
     public void deleteSubject(int position){

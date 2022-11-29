@@ -109,6 +109,7 @@ public class Home_Screen extends AppCompatActivity {
             Intent i = new Intent(this, Specific_Subject_Screen.class);
             db.close();
             i.putExtra("SUBJECT_ID", SelectedSubjectId);
+            i.putExtra("SUBJECT_NAME",selectedSUbject.getName());
             startActivity(i);
             finish();
         } else {

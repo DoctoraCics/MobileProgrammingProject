@@ -41,9 +41,9 @@ public class studentUnderSubjectRecycler extends RecyclerView.Adapter<studentUnd
 
     @Override
     public void onBindViewHolder(@NonNull studentViewHolder holder, int position) {
-        holder.studentName.setText(studentList.get(position).getStudent_Name());
-        holder.studentGrade.setText(String.valueOf(studentList.get(position).getStudent_Grade()));
-        holder.studentStatus.setText(String.valueOf(studentList.get(position).getStudent_Status()));
+        holder.studentName.setText("Name: " + studentList.get(position).getStudent_Name());
+        holder.studentGrade.setText(String.valueOf("Grade: " + studentList.get(position).getStudent_Grade()));
+        holder.studentStatus.setText(String.valueOf("Status: " + studentList.get(position).getStudent_Status()));
     }
 
     @Override

@@ -11,6 +11,9 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.mobileprogrammingproject.model.androidDBHandlerSqlLite;
 import com.google.android.material.navigation.NavigationView;
@@ -23,9 +26,15 @@ public class Update_Student_Screen extends AppCompatActivity {
     Intent intent;
 
     private int Subject_Id;
-    private androidDBHandlerSqlLite db;
+    private int Student_Number;
 
-    private Button button;
+    private androidDBHandlerSqlLite db;
+    private String subjectName;
+
+    private TextView enterName;
+    private TextView grade;
+    private Spinner statusSelect;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,14 +44,25 @@ public class Update_Student_Screen extends AppCompatActivity {
         intent = getIntent();
 
         this.Subject_Id = intent.getIntExtra("SUBJECT_ID", -1);
+        this.subjectName = intent.getStringExtra("SUBJECT_NAME");
+
 
         this.db = new androidDBHandlerSqlLite(this);
+        debugToast();
 
         toolbar = (Toolbar) findViewById(R.id.nav_action);
         setSupportActionBar(toolbar);
 
+        this.enterName = (TextView) findViewById(R.id.enterName);
+        this.grade = (TextView) findViewById(R.id.grade);
+        this.statusSelect = (Spinner) findViewById(R.id.spinnerStatus);
+
+        enterName.setText(intent.getStringExtra("STUDENT_NAME"));
+        grade.setText(String.valueOf(intent.getDoubleExtra("STUDENT_GRADE", 0)));
+        this.Student_Number = intent.getIntExtra("STUDENT_NUMBER", -1);
+
         drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
-        toggling =  new ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close);
+        toggling = new ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close);
 
         drawerLayout.addDrawerListener(toggling);
         toggling.syncState();
@@ -53,7 +73,7 @@ public class Update_Student_Screen extends AppCompatActivity {
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()){
+                switch (item.getItemId()) {
                     case R.id.home:
                         intent = new Intent(Update_Student_Screen.this, Home_Screen.class);
                         startActivity(intent);
@@ -80,30 +100,49 @@ public class Update_Student_Screen extends AppCompatActivity {
             }
         });
 
-        button = (Button) findViewById(R.id.updateStudent);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openSpecificSubjectScreen();
-            }
-        });
+    }
+
+    public void onBackPressed() {
+        openSpecificSubjectScreen();
+    }
+
+    public void updateStudent(View view) {
+        if (db.updateStudent(Subject_Id, Student_Number, enterName.getText().toString(),
+                Float.parseFloat(grade.getText().toString()),
+                statusSelect.getSelectedItem().toString())){
+            openSpecificSubjectScreen();
+        }else {
+            Toast.makeText(getApplicationContext(), "Update Failed!", Toast.LENGTH_SHORT).show();
+        }
 
     }
 
-    public void openSpecificSubjectScreen(){
+    public void openSpecificSubjectScreen(View view) {
         Intent intent = new Intent(this, Specific_Subject_Screen.class);
+        intent.putExtra("SUBJECT_ID", Subject_Id);
+        intent.putExtra("SUBJECT_NAME", subjectName);
+        db.close();
+        startActivity(intent);
+        finish();
+    }
+
+    public void openSpecificSubjectScreen() {
+        Intent intent = new Intent(this, Specific_Subject_Screen.class);
+        intent.putExtra("SUBJECT_ID", Subject_Id);
+        intent.putExtra("SUBJECT_NAME", subjectName);
         db.close();
         startActivity(intent);
     }
 
-    public boolean onOptionsItemSelected(MenuItem item)
-    {
-        if(toggling.onOptionsItemSelected(item))
-        {
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (toggling.onOptionsItemSelected(item)) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
+    }
+
+    public void debugToast() {
+        Toast.makeText(getApplicationContext(), "Subject Id: " + Subject_Id, Toast.LENGTH_SHORT).show();
     }
 
 }

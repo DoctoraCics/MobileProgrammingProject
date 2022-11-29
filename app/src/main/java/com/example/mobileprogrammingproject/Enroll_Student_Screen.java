@@ -94,15 +94,6 @@ public class Enroll_Student_Screen extends AppCompatActivity {
                 return true;
             }
         });
-
-        button = (Button) findViewById(R.id.enrollStudent);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openSpecificSubjectScreen();
-            }
-        });
-
     }
 
     public void removeId() {
@@ -130,10 +121,7 @@ public class Enroll_Student_Screen extends AppCompatActivity {
 
     public void enrollStudent(View view) {
         try {
-            if (db.enrollStudent(SubjectId,
-                    inputStudentName.getText().toString(),
-                    Float.parseFloat(inputGrade.getText().toString()),
-                    statSpinner.getSelectedItem().toString())) {
+            if (db.enrollStudent(SubjectId,inputStudentName.getText().toString(),Float.parseFloat(inputGrade.getText().toString()),statSpinner.getSelectedItem().toString())) {
                 Toast.makeText(getApplicationContext(), "Enrollment Success!", Toast.LENGTH_SHORT).show();
                 openSpecificSubjectScreen();
             }

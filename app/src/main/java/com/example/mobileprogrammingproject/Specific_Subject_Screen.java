@@ -2,12 +2,14 @@ package com.example.mobileprogrammingproject;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -36,6 +38,8 @@ public class Specific_Subject_Screen extends AppCompatActivity implements Recycl
     private ArrayList<Student> studentList;
     private int Subject_Id;
 
+    private String subjectName;
+
     private Intent intent;
     private androidDBHandlerSqlLite db;
     private SharedPreferences shareDPreferences;
@@ -55,6 +59,9 @@ public class Specific_Subject_Screen extends AppCompatActivity implements Recycl
         this.Subject_Id = intent.getIntExtra("SUBJECT_ID", -1);
         this.studentList = db.selectStudentsUnderSubject(Subject_Id);
 
+        this.subjectName = intent.getStringExtra("SUBJECT_NAME");
+        setTitle(subjectName);
+
         studentUnderSubjectRecycler studentAdaptor = new studentUnderSubjectRecycler(this, studentList, Subject_Id, this);
         studentRecycler.setAdapter(studentAdaptor);
         studentRecycler.setLayoutManager(new LinearLayoutManager(this));
@@ -72,16 +79,6 @@ public class Specific_Subject_Screen extends AppCompatActivity implements Recycl
 
         readNotes();
         debugToast();
-
-//        try{
-//            ArrayList subjectList = db.selectStudentsUnderSubject(SubjectId);
-//            ArrayAdapter<Subject> displaySubjectList = new ArrayAdapter<Subject>(
-//                    getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, subjectList);
-//            displaySubjectList.setDropDownViewResource( android.R.layout.simple_spinner_dropdown_item
-//            );
-//            spinnerHome.setAdapter(displaySubjectList);} catch (Exception e){
-//            e.printStackTrace();
-//        }
 
         navigationView = (NavigationView) findViewById(R.id.nav_menu);
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -197,11 +194,40 @@ public class Specific_Subject_Screen extends AppCompatActivity implements Recycl
 
     @Override
     public void onUpdateClick(int position) {
-
+        Intent intent = new Intent(this, Update_Student_Screen.class);
+        db.close();
+        intent.putExtra("SUBJECT_NAME",subjectName);
+        intent.putExtra("SUBJECT_ID", Subject_Id);
+        intent.putExtra("STUDENT_NUMBER",studentList.get(position).getStudent_Number());
+        intent.putExtra("STUDENT_NAME",studentList.get(position).getStudent_Name());
+        intent.putExtra("STUDENT_GRADE", studentList.get(position).getStudent_Grade());
+        startActivity(intent);
+        finish();
     }
 
     @Override
     public void onDeleteCLick(int position) {
+        new AlertDialog.Builder(this)
+                .setTitle("Un Enroll")
+                .setMessage("Are you sure you want to unenroll this Student?")
+                .setNegativeButton(android.R.string.no, null)
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface arg0, int arg1) {
+                        unEnrollStudent(position);
+                    }
+                }).create().show();
+    }
 
+    public void unEnrollStudent(int position){
+        if(db.unEnrollStudent(studentList.get(position).getStudent_Number())){
+            this.studentList = db.selectStudentsUnderSubject(Subject_Id);
+            studentUnderSubjectRecycler studentAdaptor = new studentUnderSubjectRecycler(this, studentList, Subject_Id, this);
+            studentRecycler.setAdapter(studentAdaptor);
+            studentRecycler.setLayoutManager(new LinearLayoutManager(this));
+            Toast.makeText(getApplicationContext(), "Student unenrolled", Toast.LENGTH_SHORT).show();
+        }
+        else{
+            Toast.makeText(getApplicationContext(), "unenrollment Failed", Toast.LENGTH_SHORT).show();
+        }
     }
 }

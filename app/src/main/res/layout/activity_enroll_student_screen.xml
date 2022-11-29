@@ -33,7 +33,7 @@
             android:hint="Enter Name"
             android:inputType="textPersonName"
             android:minHeight="48dp"
-            android:textColor="#1E000000"
+            android:textColor="#1EF8F7F7"
             android:textColorHint="#FFFFFF" />
 
         <TextView

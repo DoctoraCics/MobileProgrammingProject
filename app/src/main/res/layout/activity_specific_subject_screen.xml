@@ -20,8 +20,10 @@
 
         <Button
             android:id="@+id/enrollStudent2"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
             android:onClick="enrollStudentScreen"
             android:text="Enroll Student"
             app:backgroundTint="#F5881F" />
@@ -62,16 +64,18 @@
 
         <Button
             android:id="@+id/save"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:onClick="saveNotes"
             android:text="Save Notes"
             app:backgroundTint="#F5881F" />
 
         <Button
             android:id="@+id/clear"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:onClick="deleteNotes"
             android:text="Clear Notes"
             app:backgroundTint="#F5881F" />

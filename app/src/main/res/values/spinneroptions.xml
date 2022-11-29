@@ -1,40 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="statusOptions">
-        <item>Select</item>
-        <item>Passed</item>
-        <item>Failed</item>
-        <item>INC</item>
-        <item>INP</item>
-        <item>FA</item>
+        <item>Outstanding</item>
+        <item>Very Satisfactory (Passed)</item>
+        <item>Satisfactory (Passed)</item>
+        <item>Fairly Satisfactory (Passed)</item>
+        <item>Did Not Meet Expectations (Failed)</item>
     </string-array>
 
     <string-array name="subjectstatus">
-        <item>Select</item>
-        <item>On going</item>
-        <item>Finished</item>
-        <item>Not Available</item>
+        <item>On-going</item>
+        <item>Completed</item>
     </string-array>
 
     <string-array name="gradeOptions">
-        <item>Select</item>
-        <item>1.0</item>
-        <item>1.5</item>
-        <item>2.0</item>
-        <item>2.5</item>
-        <item>3.0</item>
-        <item>5.0</item>
+        <item>90-100</item>
+        <item>85-89</item>
+        <item>80-84</item>
+        <item>75-79</item>
+        <item>Below 75</item>
     </string-array>
 
     <string-array name="subjectOptions">
-        <item>Select</item>
-        <item>FILIPINO</item>
-        <item>SCIENCE</item>
-        <item>MATH</item>
-        <item>ENGLISH</item>
-        <item>HISTORY</item>
-        <item>PE</item>
-        <item>THEOLOGY</item>
-        <item>ELECTIVES</item>
+        <item>Mother Tongue</item>
+        <item>Filipino</item>
+        <item>English</item>
+        <item>Mathematics</item>
+        <item>Science</item>
+        <item>Araling Panlipunan</item>
+        <item>Edukasyon sa Pagpapakatao (EsP)</item>
+        <item>Music</item>
+        <item>Arts</item>
+        <item>Physical Education</item>
+        <item>Health</item>
+        <item>Edukasyong Pantahanan at Pangkabuhayan (EPP)</item>
+        <item>Technology and Livelihood Education (TLE)</item>
     </string-array>
 </resources>

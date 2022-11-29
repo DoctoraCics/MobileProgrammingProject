@@ -28,6 +28,11 @@
             android:text="Enroll Student"
             app:backgroundTint="#F5881F" />
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/studentRecycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -51,12 +56,15 @@
                     android:id="@+id/enterNotes"
                     android:layout_width="match_parent"
                     android:layout_height="294dp"
-
+                    android:backgroundTint="@color/white"
                     android:ems="10"
                     android:gravity="start|top"
-                    android:hint="Enter subject notes"
+                    android:hint="Enter Subject Notes"
                     android:inputType="textMultiLine"
-                     />
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -80,10 +88,6 @@
             android:text="Clear Notes"
             app:backgroundTint="#F5881F" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/studentRecycler"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
     </LinearLayout>
 
     <com.google.android.material.navigation.NavigationView

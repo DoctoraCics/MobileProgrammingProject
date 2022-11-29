@@ -25,16 +25,24 @@
             android:text="Student Name"
             android:textColor="@color/white" />
 
-        <EditText
-            android:id="@+id/studentName"
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Enter Name"
-            android:inputType="textPersonName"
-            android:minHeight="48dp"
-            android:textColor="#FFFFFF"
-            android:textColorHint="#FFFFFF" />
+            app:strokeWidth="1dp"
+            app:strokeColor="@color/black"
+            app:cardCornerRadius="4dp">
+
+            <EditText
+                android:id="@+id/studentName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:ems="10"
+                android:hint="Enter Name"
+                android:inputType="textPersonName"
+                android:minHeight="48dp"/>
+
+        </com.google.android.material.card.MaterialCardView>
 
         <TextView
             android:id="@+id/textView3"
@@ -43,16 +51,24 @@
             android:text="Grade"
             android:textColor="@color/white" />
 
-        <EditText
-            android:id="@+id/enterGrade"
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Enter Grade"
-            android:inputType="textPersonName"
-            android:minHeight="48dp"
-            android:textColor="#FFFFFF"
-            android:textColorHint="#E4E3E3" />
+            app:strokeWidth="1dp"
+            app:strokeColor="@color/black"
+            app:cardCornerRadius="4dp">
+
+            <EditText
+                android:id="@+id/enterGrade"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:ems="10"
+                android:hint="Enter Grade"
+                android:inputType="textPersonName"
+                android:minHeight="48dp"/>
+
+        </com.google.android.material.card.MaterialCardView>
 
         <TextView
             android:id="@+id/textView2"

@@ -33,7 +33,7 @@
             android:hint="Enter Name"
             android:inputType="textPersonName"
             android:minHeight="48dp"
-            android:textColor="#1EF8F7F7"
+            android:textColor="#FFFFFF"
             android:textColorHint="#FFFFFF" />
 
         <TextView
@@ -72,7 +72,7 @@
                 android:id="@+id/statusSpinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:entries="@array/subjectstatus"
+                android:entries="@array/statusOptions"
                 android:minHeight="48dp"
                 android:padding="10dp" />
 

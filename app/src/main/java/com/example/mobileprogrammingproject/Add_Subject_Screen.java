@@ -59,19 +59,23 @@ public class Add_Subject_Screen extends AppCompatActivity {
                     case R.id.home:
                         intent = new Intent(Add_Subject_Screen.this, Home_Screen.class);
                         startActivity(intent);
+                        db.close();
                         finish();
                         return true;
                     case R.id.about:
                         intent = new Intent(Add_Subject_Screen.this, About_Screen.class);
                         startActivity(intent);
+                        db.close();
                         finish();
                         return true;
                     case R.id.subjects:
                         intent = new Intent(Add_Subject_Screen.this, Subject_Screen.class);
                         startActivity(intent);
+                        db.close();
                         finish();
                         return true;
                     case R.id.exit:
+                        db.close();
                         System.exit(0);
                 }
                 return true;
@@ -80,18 +84,20 @@ public class Add_Subject_Screen extends AppCompatActivity {
     }
 
     public void addSubjectDB(View view){
+
         String enteredSubj = this.enterSubj.getText().toString();
         String enteredCode = this.enterCode.getText().toString();
         String selectedStatus = this.statusDropdown.getSelectedItem().toString();
+
         if (db.insertSubject(enteredSubj, enteredCode, selectedStatus)) {
             Toast.makeText(getApplicationContext(),"Success!", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(this, Subject_Screen.class);
+            db.close();
             startActivity(intent);
         }
         else{
             Toast.makeText(getApplicationContext(),"Failed", Toast.LENGTH_SHORT).show();
         }
-
     }
 
     public boolean onOptionsItemSelected(MenuItem item)

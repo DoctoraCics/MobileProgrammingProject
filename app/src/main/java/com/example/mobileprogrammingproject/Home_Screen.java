@@ -31,7 +31,6 @@ public class Home_Screen extends AppCompatActivity {
     public Intent intent;
 
     private androidDBHandlerSqlLite db;
-    public final static String SUBJECT_ID = "com.example.mobileprogrammingproject.SUBJECT_ID";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,16 +68,19 @@ public class Home_Screen extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case R.id.home:
                         Toast.makeText(getApplicationContext(), "You are already at the home screen", Toast.LENGTH_SHORT).show();
+                        db.close();
                         removeId();
                         return true;
                     case R.id.subjects:
                         intent = new Intent(Home_Screen.this, Subject_Screen.class);
+                        db.close();
                         removeId();
                         startActivity(intent);
                         finish();
                         return true;
                     case R.id.about:
                         intent = new Intent(Home_Screen.this, About_Screen.class);
+                        db.close();
                         removeId();
                         startActivity(intent);
                         finish();
@@ -94,7 +96,7 @@ public class Home_Screen extends AppCompatActivity {
 
     public void removeId() {
         try{
-            intent.removeExtra(Home_Screen.SUBJECT_ID);
+            intent.removeExtra("SUBJECT_ID");
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -105,6 +107,7 @@ public class Home_Screen extends AppCompatActivity {
         if (selectedSUbject != null) {
             int SelectedSubjectId = selectedSUbject.getSubjectId();
             Intent i = new Intent(this, Specific_Subject_Screen.class);
+            db.close();
             i.putExtra("SUBJECT_ID", SelectedSubjectId);
             startActivity(i);
             finish();

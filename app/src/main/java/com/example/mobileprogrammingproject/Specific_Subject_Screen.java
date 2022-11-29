@@ -92,12 +92,14 @@ public class Specific_Subject_Screen extends AppCompatActivity implements Recycl
                         intent = new Intent(Specific_Subject_Screen.this, Home_Screen.class);
                         removeId();
                         startActivity(intent);
+                        db.close();
                         finish();
                         return true;
                     case R.id.about:
                         intent = new Intent(Specific_Subject_Screen.this, About_Screen.class);
                         removeId();
                         startActivity(intent);
+                        db.close();
                         finish();
                         return true;
                     case R.id.subjects:
@@ -105,6 +107,7 @@ public class Specific_Subject_Screen extends AppCompatActivity implements Recycl
                         removeId();
                         startActivity(intent);
                         finish();
+                        db.close();
                         return true;
                     case R.id.exit:
                         System.exit(0);
@@ -123,6 +126,8 @@ public class Specific_Subject_Screen extends AppCompatActivity implements Recycl
 
     public void enrollStudentScreen(View view) {
         Intent intent = new Intent(this, Enroll_Student_Screen.class);
+        intent.putExtra("SUBJECT_ID",Subject_Id);
+        db.close();
         startActivity(intent);
     }
 
@@ -132,8 +137,7 @@ public class Specific_Subject_Screen extends AppCompatActivity implements Recycl
             SharedPreferences sharedPreferences = getSharedPreferences("NotePreferences", MODE_PRIVATE);
 
             SharedPreferences.Editor myEdit = sharedPreferences.edit();
-            int subId = intent.getIntExtra(Home_Screen.SUBJECT_ID, 0);
-            myEdit.putString(String.valueOf(subId), enterNotes.getText().toString());
+            myEdit.putString(String.valueOf(Subject_Id), enterNotes.getText().toString());
             myEdit.commit();
         } catch (Exception e) {
             e.printStackTrace();
@@ -143,8 +147,7 @@ public class Specific_Subject_Screen extends AppCompatActivity implements Recycl
 
     public void readNotes() {
         SharedPreferences sharedPreferences = getSharedPreferences("NotePreferences", MODE_APPEND);
-        int subId = intent.getIntExtra(Home_Screen.SUBJECT_ID, 0);
-        String s1 = sharedPreferences.getString(String.valueOf(subId), "");
+        String s1 = sharedPreferences.getString(String.valueOf(Subject_Id), "");
         enterNotes.setText(s1);
     }
 
@@ -154,8 +157,7 @@ public class Specific_Subject_Screen extends AppCompatActivity implements Recycl
             SharedPreferences sharedPreferences = getSharedPreferences("NotePreferences", MODE_PRIVATE);
 
             SharedPreferences.Editor myEdit = sharedPreferences.edit();
-            int subId = intent.getIntExtra(Home_Screen.SUBJECT_ID, 0);
-            myEdit.remove(String.valueOf(subId));
+            myEdit.remove(String.valueOf(Subject_Id));
             enterNotes.setText("");
             myEdit.commit();
         } catch (Exception e) {
@@ -179,17 +181,18 @@ public class Specific_Subject_Screen extends AppCompatActivity implements Recycl
 
     public void goBacktoHome() {
         Intent intent = new Intent(this, Home_Screen.class);
+        db.close();
         startActivity(intent);
         finish();
     }
 
     public void debugToast() {
-        Toast.makeText(getApplicationContext(), "Subject Id: " + intent.getIntExtra(Home_Screen.SUBJECT_ID, 0), Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "Subject Id: " + Subject_Id, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onBackPressed() {
-
+        goBacktoHome();
     }
 
     @Override

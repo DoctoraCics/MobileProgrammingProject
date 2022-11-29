@@ -79,17 +79,22 @@ public class Subject_Screen extends AppCompatActivity implements RecyclerInterfa
                     case R.id.home:
                         intent = new Intent(Subject_Screen.this, Home_Screen.class);
                         startActivity(intent);
+                        db.close();
                         finish();
                         return true;
                     case R.id.about:
                         intent = new Intent(Subject_Screen.this, About_Screen.class);
                         startActivity(intent);
+                        db.close();
                         finish();
                         return true;
                     case R.id.subjects:
+                        db.close();
                         Toast.makeText(getApplicationContext(), "You are already at the subject screen", Toast.LENGTH_SHORT).show();
+                        finish();
                         return true;
                     case R.id.exit:
+                        db.close();
                         System.exit(0);
                 }
                 return true;
@@ -99,11 +104,13 @@ public class Subject_Screen extends AppCompatActivity implements RecyclerInterfa
 
     public void openAddSubjectScreen(View view) {
         Intent intent = new Intent(this, Add_Subject_Screen.class);
+        db.close();
         startActivity(intent);
     }
 
     public void openUpdateSubjectScreen() {
         Intent intent = new Intent(this, Update_Subject_Screen.class);
+        db.close();
         startActivity(intent);
     }
 
@@ -121,6 +128,7 @@ public class Subject_Screen extends AppCompatActivity implements RecyclerInterfa
         intent.putExtra("ID", retrievedSubj.get(position).getSubjectId());
         intent.putExtra("SUBJECTNAME", retrievedSubj.get(position).getName());
         intent.putExtra("SUBJECTCODE", retrievedSubj.get(position).getSubject_Code());
+        db.close();
         startActivity(intent);
         finish();
     }

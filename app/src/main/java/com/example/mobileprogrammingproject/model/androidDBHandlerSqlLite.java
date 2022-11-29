@@ -83,16 +83,18 @@ public class androidDBHandlerSqlLite extends SQLiteOpenHelper {
     }
 
     public ArrayList<Student> selectStudentsUnderSubject(int Subject_Id) {
+
         try {
             ArrayList<Student> studentWithSubject = new ArrayList<>();
             SQLiteDatabase db = this.getWritableDatabase();
 
-            String unformattedsqlStmt = "SELECT Student_Table.Student_Number, Student_Table.Student_Grade, Subject_Table.Subject_Name, \n"
-                    + "Student_Table.Student_Status, Student_Table.Student_Name\n"
-                    + "FROM Student_Table \n"
+            String unformattedsqlStmt = "SELECT Student_Table.Student_Number, Student_Table.Student_Grade, Subject_Table.Subject_Name FROM Student_Table "
                     + "JOIN Subject_Table ON Student_Table.Student_Subject_Id = Subject_Table.Subject_Id WHERE Student_Table.Student_Subject_Id = %d;";
 
             String sqlStmt = String.format(unformattedsqlStmt, Subject_Id);
+
+            //System.out.println(sqlStmt);
+
             Cursor cursor = db.rawQuery(sqlStmt, null);
             while(cursor.moveToNext()){
                 int StudentNum = cursor.getInt(0);
@@ -103,6 +105,8 @@ public class androidDBHandlerSqlLite extends SQLiteOpenHelper {
                 Student newStudent = new Student(StudentNum,StudentGrade,SubjectName,StudentStatus,StudentName);
                 studentWithSubject.add(newStudent);
             }
+            cursor.close();
+            //System.out.println("Student list size: " + studentWithSubject.size());
             return studentWithSubject;
         } catch (Exception e) {
             e.printStackTrace();
@@ -121,6 +125,7 @@ public class androidDBHandlerSqlLite extends SQLiteOpenHelper {
                 subjectList.add(new Subject(cursor.getInt(0), cursor.getString(1)
                 ,cursor.getString(2),cursor.getString(3)));
             }
+            cursor.close();
             return subjectList;
         } catch (Exception e) {
             e.printStackTrace();
@@ -172,6 +177,8 @@ public class androidDBHandlerSqlLite extends SQLiteOpenHelper {
             String sqlStmt = "INSERT INTO Student_Table (Student_Number, Student_Name, Student_Grade, Student_Status, Subject_Id)\n"
                     + "VALUES (?, ?, ?, ?, ?);";
             SQLiteStatement stmt = db.compileStatement(sqlStmt);
+
+            System.out.println(sqlStmt);
 
             stmt.bindLong(1, randomId);
             stmt.bindString(2, studentName);

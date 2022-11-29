@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.mobileprogrammingproject.model.androidDBHandlerSqlLite;
 import com.google.android.material.navigation.NavigationView;
 
 public class Update_Student_Screen extends AppCompatActivity {
@@ -21,6 +22,9 @@ public class Update_Student_Screen extends AppCompatActivity {
     NavigationView navigationView;
     Intent intent;
 
+    private int Subject_Id;
+    private androidDBHandlerSqlLite db;
+
     private Button button;
 
     @Override
@@ -29,6 +33,10 @@ public class Update_Student_Screen extends AppCompatActivity {
         setContentView(R.layout.activity_update_student_screen);
 
         intent = getIntent();
+
+        this.Subject_Id = intent.getIntExtra("SUBJECT_ID", -1);
+
+        this.db = new androidDBHandlerSqlLite(this);
 
         toolbar = (Toolbar) findViewById(R.id.nav_action);
         setSupportActionBar(toolbar);
@@ -49,19 +57,23 @@ public class Update_Student_Screen extends AppCompatActivity {
                     case R.id.home:
                         intent = new Intent(Update_Student_Screen.this, Home_Screen.class);
                         startActivity(intent);
+                        db.close();
                         finish();
                         return true;
                     case R.id.about:
                         intent = new Intent(Update_Student_Screen.this, About_Screen.class);
                         startActivity(intent);
                         finish();
+                        db.close();
                         return true;
                     case R.id.subjects:
                         intent = new Intent(Update_Student_Screen.this, Subject_Screen.class);
                         startActivity(intent);
+                        db.close();
                         finish();
                         return true;
                     case R.id.exit:
+                        db.close();
                         System.exit(0);
                 }
                 return true;
@@ -80,6 +92,7 @@ public class Update_Student_Screen extends AppCompatActivity {
 
     public void openSpecificSubjectScreen(){
         Intent intent = new Intent(this, Specific_Subject_Screen.class);
+        db.close();
         startActivity(intent);
     }
 

@@ -25,6 +25,8 @@ public class Enroll_Student_Screen extends AppCompatActivity {
 
     private androidDBHandlerSqlLite db;
 
+    private int SubjectId;
+
     private TextView inputStudentName;
     private TextView inputGrade;
     private Spinner statSpinner;
@@ -41,6 +43,7 @@ public class Enroll_Student_Screen extends AppCompatActivity {
         intent = getIntent();
         this.db = new androidDBHandlerSqlLite(this);
 
+        SubjectId = intent.getIntExtra("SUBJECT_ID", -1);
 
         this.inputStudentName = (TextView) findViewById(R.id.studentName);
         this.inputGrade = (TextView) findViewById(R.id.enterGrade);
@@ -65,22 +68,26 @@ public class Enroll_Student_Screen extends AppCompatActivity {
                     case R.id.home:
                         intent = new Intent(Enroll_Student_Screen.this, Home_Screen.class);
                         removeId();
+                        db.close();
                         startActivity(intent);
                         finish();
                         return true;
                     case R.id.about:
                         intent = new Intent(Enroll_Student_Screen.this, About_Screen.class);
                         removeId();
+                        db.close();
                         startActivity(intent);
                         finish();
                         return true;
                     case R.id.subjects:
                         intent = new Intent(Enroll_Student_Screen.this, Subject_Screen.class);
                         removeId();
+                        db.close();
                         startActivity(intent);
                         finish();
                         return true;
                     case R.id.exit:
+                        db.close();
                         System.exit(0);
                         return true;
                 }
@@ -100,13 +107,15 @@ public class Enroll_Student_Screen extends AppCompatActivity {
 
     public void removeId() {
         try {
-            intent.removeExtra(Home_Screen.SUBJECT_ID);
+            intent.removeExtra("SUBJECT_ID");
         } catch (Exception e) {
         }
     }
 
     public void openSpecificSubjectScreen() {
         Intent intent = new Intent(this, Specific_Subject_Screen.class);
+        intent.putExtra("SUBJECT_ID", SubjectId);
+        db.close();
         startActivity(intent);
         finish();
     }
@@ -121,7 +130,7 @@ public class Enroll_Student_Screen extends AppCompatActivity {
 
     public void enrollStudent(View view) {
         try {
-            if (db.enrollStudent(Integer.parseInt(intent.getStringExtra(Home_Screen.SUBJECT_ID)),
+            if (db.enrollStudent(SubjectId,
                     inputStudentName.getText().toString(),
                     Float.parseFloat(inputGrade.getText().toString()),
                     statSpinner.getSelectedItem().toString())) {

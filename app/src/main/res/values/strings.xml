@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MobileProgrammingProject</string>
+    <string name="app_name">T&amp;S Academic Records</string>
 
     <!-- Toolbar-->
     <string name="open">Open Navigation Drawer</string>
@@ -21,23 +21,5 @@
 
     <string name="row_name">Name</string>
     <string name="row_grade">Grade</string>
-
-    <!-- Recycler Viewer -->
-    <string-array name="Subject">
-        <item>Filipino</item>
-    </string-array>
-    <string-array name="Code">
-        <item>Code-001</item>
-    </string-array>
-    <string-array name="Status">
-        <item>Passed</item>
-    </string-array>
-
-    <string-array name="Name">
-        <item>John Doe</item>
-    </string-array>
-    <string-array name="Grade">
-        <item>1.0</item>
-    </string-array>
 
 </resources>

@@ -76,6 +76,7 @@ public class Add_Subject_Screen extends AppCompatActivity {
                         return true;
                     case R.id.exit:
                         db.close();
+                        finish();
                         System.exit(0);
                 }
                 return true;
@@ -94,10 +95,18 @@ public class Add_Subject_Screen extends AppCompatActivity {
             Intent intent = new Intent(this, Subject_Screen.class);
             db.close();
             startActivity(intent);
+            finish();
         }
         else{
             Toast.makeText(getApplicationContext(),"Failed", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    public void onBackPressed(){
+        Intent intent = new Intent(this, Subject_Screen.class);
+        startActivity(intent);
+        db.close();
+        finish();
     }
 
     public boolean onOptionsItemSelected(MenuItem item)

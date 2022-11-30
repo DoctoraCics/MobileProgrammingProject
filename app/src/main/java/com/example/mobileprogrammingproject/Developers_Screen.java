@@ -61,6 +61,8 @@ public class Developers_Screen extends AppCompatActivity {
                         return true;
                     case R.id.exit:
                         System.exit(0);
+                        finish();
+                        return true;
                 }
                 return true;
             }
@@ -95,16 +97,25 @@ public class Developers_Screen extends AppCompatActivity {
     public void openDoctoraScreen(){
         Intent intent = new Intent(this, Doctora_Screen.class);
         startActivity(intent);
+        finish();
     }
 
     public void openSandiScreen(){
         Intent intent = new Intent(this, Sandi_Screen.class);
         startActivity(intent);
+        finish();
     }
 
     public void openTamayoScreen(){
         Intent intent = new Intent(this, Tamayo_Screen.class);
         startActivity(intent);
+        finish();
+    }
+
+    public void onBackPressed(){
+        Intent intent = new Intent(this, About_Screen.class);
+        startActivity(intent);
+        finish();
     }
 
     public boolean onOptionsItemSelected(MenuItem item)

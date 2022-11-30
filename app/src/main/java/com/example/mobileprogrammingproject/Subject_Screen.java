@@ -95,6 +95,7 @@ public class Subject_Screen extends AppCompatActivity implements RecyclerInterfa
                         return true;
                     case R.id.exit:
                         db.close();
+                        finish();
                         System.exit(0);
                 }
                 return true;
@@ -106,12 +107,14 @@ public class Subject_Screen extends AppCompatActivity implements RecyclerInterfa
         Intent intent = new Intent(this, Add_Subject_Screen.class);
         db.close();
         startActivity(intent);
+        finish();
     }
 
     public void openUpdateSubjectScreen() {
         Intent intent = new Intent(this, Update_Subject_Screen.class);
         db.close();
         startActivity(intent);
+        finish();
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -119,6 +122,13 @@ public class Subject_Screen extends AppCompatActivity implements RecyclerInterfa
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void onBackPressed(){
+        Intent intent = new Intent(this, Home_Screen.class);
+        db.close();
+        startActivity(intent);
+        finish();
     }
 
     @Override
@@ -160,5 +170,4 @@ public class Subject_Screen extends AppCompatActivity implements RecyclerInterfa
 
         }
     }
-
 }

@@ -11,6 +11,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.mobileprogrammingproject.R;
 import com.example.mobileprogrammingproject.model.RecyclerInterface;
 import com.example.mobileprogrammingproject.model.Student;
+
+import java.text.NumberFormat;
 import java.util.ArrayList;
 
 public class studentUnderSubjectRecycler extends RecyclerView.Adapter<studentUnderSubjectRecycler.studentViewHolder> {
@@ -42,7 +44,8 @@ public class studentUnderSubjectRecycler extends RecyclerView.Adapter<studentUnd
     @Override
     public void onBindViewHolder(@NonNull studentViewHolder holder, int position) {
         holder.studentName.setText("Name: " + studentList.get(position).getStudent_Name());
-        holder.studentGrade.setText(String.valueOf("Grade: " + studentList.get(position).getStudent_Grade()));
+        double unformattedGrade = studentList.get(position).getStudent_Grade();
+        holder.studentGrade.setText(String.valueOf("Grade: " + String.format("%.2f", unformattedGrade)));
         holder.studentStatus.setText(String.valueOf("Status: " + studentList.get(position).getStudent_Status()));
     }
 

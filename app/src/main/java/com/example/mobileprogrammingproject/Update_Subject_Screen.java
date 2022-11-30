@@ -131,6 +131,7 @@ public class Update_Subject_Screen extends AppCompatActivity {
     public void onBackPressed() {
         removeExtras();
         Intent intent = new Intent(this, Subject_Screen.class);
+        intent.putExtra("SUBJECT_NAME", subjectName);
         startActivity(intent);
         finish();
     }

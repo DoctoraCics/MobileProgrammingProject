@@ -58,7 +58,8 @@ public class Update_Student_Screen extends AppCompatActivity {
         this.statusSelect = (Spinner) findViewById(R.id.spinnerStatus);
 
         enterName.setText(intent.getStringExtra("STUDENT_NAME"));
-        grade.setText(String.valueOf(intent.getDoubleExtra("STUDENT_GRADE", 0)));
+        double unformattedGrade = intent.getDoubleExtra("STUDENT_GRADE", 0);
+        grade.setText(String.format("%.2f", unformattedGrade));
         this.Student_Number = intent.getIntExtra("STUDENT_NUMBER", -1);
 
         drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
@@ -94,6 +95,7 @@ public class Update_Student_Screen extends AppCompatActivity {
                         return true;
                     case R.id.exit:
                         db.close();
+                        finish();
                         System.exit(0);
                 }
                 return true;
@@ -132,6 +134,7 @@ public class Update_Student_Screen extends AppCompatActivity {
         intent.putExtra("SUBJECT_NAME", subjectName);
         db.close();
         startActivity(intent);
+        finish();
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {

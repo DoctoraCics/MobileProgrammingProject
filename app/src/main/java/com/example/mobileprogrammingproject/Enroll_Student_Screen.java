@@ -26,6 +26,7 @@ public class Enroll_Student_Screen extends AppCompatActivity {
     private androidDBHandlerSqlLite db;
 
     private int SubjectId;
+    private String SubjectName;
 
     private TextView inputStudentName;
     private TextView inputGrade;
@@ -33,8 +34,6 @@ public class Enroll_Student_Screen extends AppCompatActivity {
 
     NavigationView navigationView;
     Intent intent;
-
-    private Button button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +43,7 @@ public class Enroll_Student_Screen extends AppCompatActivity {
         this.db = new androidDBHandlerSqlLite(this);
 
         SubjectId = intent.getIntExtra("SUBJECT_ID", -1);
+        SubjectName = intent.getStringExtra("SUBJECT_NAME");
 
         this.inputStudentName = (TextView) findViewById(R.id.studentName);
         this.inputGrade = (TextView) findViewById(R.id.enterGrade);
@@ -103,9 +103,14 @@ public class Enroll_Student_Screen extends AppCompatActivity {
         }
     }
 
+    public void onBackPressed(){
+        openSpecificSubjectScreen();
+    }
+
     public void openSpecificSubjectScreen() {
         Intent intent = new Intent(this, Specific_Subject_Screen.class);
         intent.putExtra("SUBJECT_ID", SubjectId);
+        intent.putExtra("SUBJECT_NAME", SubjectName);
         db.close();
         startActivity(intent);
         finish();

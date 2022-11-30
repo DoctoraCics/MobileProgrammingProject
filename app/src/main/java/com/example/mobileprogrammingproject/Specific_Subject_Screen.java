@@ -124,6 +124,7 @@ public class Specific_Subject_Screen extends AppCompatActivity implements Recycl
     public void enrollStudentScreen(View view) {
         Intent intent = new Intent(this, Enroll_Student_Screen.class);
         intent.putExtra("SUBJECT_ID",Subject_Id);
+        intent.putExtra("SUBJECT_NAME", subjectName);
         db.close();
         startActivity(intent);
     }
@@ -208,7 +209,7 @@ public class Specific_Subject_Screen extends AppCompatActivity implements Recycl
     @Override
     public void onDeleteCLick(int position) {
         new AlertDialog.Builder(this)
-                .setTitle("Un Enroll")
+                .setTitle("Unenrollment")
                 .setMessage("Are you sure you want to unenroll this Student?")
                 .setNegativeButton(android.R.string.no, null)
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {

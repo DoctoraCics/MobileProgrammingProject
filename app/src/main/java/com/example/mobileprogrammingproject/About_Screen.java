@@ -61,6 +61,8 @@ public class About_Screen extends AppCompatActivity {
                         return true;
                     case R.id.exit:
                         System.exit(0);
+                        finish();
+                        return true;
                 }
                 return true;
             }
@@ -79,6 +81,13 @@ public class About_Screen extends AppCompatActivity {
     public void openDeveloperScreen(){
         Intent intent = new Intent(this, Developers_Screen.class);
         startActivity(intent);
+        finish();
+    }
+
+    public void onBackPressed(){
+        Intent intent = new Intent(this, Home_Screen.class);
+        startActivity(intent);
+        finish();
     }
 
     public boolean onOptionsItemSelected(MenuItem item)

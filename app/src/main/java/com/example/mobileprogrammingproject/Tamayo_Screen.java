@@ -77,9 +77,14 @@ public class Tamayo_Screen extends AppCompatActivity {
 
     }
 
+    public void onBackPressed(){
+        openDeveloperScreen();
+    }
+
     public void openDeveloperScreen(){
         Intent intent = new Intent(this, Developers_Screen.class);
         startActivity(intent);
+        finish();
     }
 
     public boolean onOptionsItemSelected(MenuItem item)

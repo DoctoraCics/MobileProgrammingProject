@@ -39,6 +39,8 @@ public class subjectRecyclerView extends RecyclerView.Adapter<subjectRecyclerVie
     @Override
     public void onBindViewHolder(@NonNull subjectRecyclerView.subjectViewHolder holder, int position) {
         holder.subjectdispName.setText(subjectList.get(position).getName());
+        holder.subjectdispCode.setText(subjectList.get(position).getSubject_Code());
+        holder.subjectdispStatus.setText(subjectList.get(position).getSubject_Status());
     }
 
     @Override
@@ -50,13 +52,19 @@ public class subjectRecyclerView extends RecyclerView.Adapter<subjectRecyclerVie
 
         Button updateSubject;
         Button deleteSubject;
+
         TextView subjectdispName;
+        TextView subjectdispCode;
+        TextView subjectdispStatus;
 
         public subjectViewHolder(@NonNull View itemView, RecyclerInterface RecyclerInterface) {
             super(itemView);
             this.updateSubject = itemView.findViewById(R.id.updateSubject);
             this.deleteSubject = itemView.findViewById(R.id.deleteSubject);
+
             this.subjectdispName = itemView.findViewById(R.id.subjectdispName);
+            this.subjectdispCode = itemView.findViewById(R.id.subjectdispCode);
+            this.subjectdispStatus = itemView.findViewById(R.id.subjectdispStatus);
 
             updateSubject.setOnClickListener(new View.OnClickListener() {
                 @Override

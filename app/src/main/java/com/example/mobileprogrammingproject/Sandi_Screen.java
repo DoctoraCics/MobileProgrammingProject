@@ -80,6 +80,11 @@ public class Sandi_Screen extends AppCompatActivity {
     public void openDeveloperScreen(){
         Intent intent = new Intent(this, Developers_Screen.class);
         startActivity(intent);
+        finish();
+    }
+
+    public void onBackPressed(){
+        openDeveloperScreen();
     }
 
     public boolean onOptionsItemSelected(MenuItem item)

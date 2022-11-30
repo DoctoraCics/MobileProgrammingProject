@@ -12,7 +12,7 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.MobileProgrammingProject"
-        tools:targetApi="31">
+        tools:targetApi="19">
         <activity
             android:name=".Tamayo_Screen"
             android:exported="true" />

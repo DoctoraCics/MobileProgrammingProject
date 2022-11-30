@@ -107,7 +107,10 @@ public class Specific_Subject_Screen extends AppCompatActivity implements Recycl
                         db.close();
                         return true;
                     case R.id.exit:
+                        finish();
+                        db.close();
                         System.exit(0);
+                        return true;
                 }
                 return true;
             }

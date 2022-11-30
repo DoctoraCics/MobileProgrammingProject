@@ -148,7 +148,7 @@ public class Subject_Screen extends AppCompatActivity implements RecyclerInterfa
 
         new AlertDialog.Builder(this)
                 .setTitle("Deletion")
-                .setMessage("Are you sure you want to delete this subject?")
+                .setMessage("Are you sure you want to delete this subject and its students?")
                 .setNegativeButton(android.R.string.no, null)
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
 

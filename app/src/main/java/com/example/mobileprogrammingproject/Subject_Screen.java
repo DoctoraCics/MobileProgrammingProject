@@ -89,9 +89,7 @@ public class Subject_Screen extends AppCompatActivity implements RecyclerInterfa
                         finish();
                         return true;
                     case R.id.subjects:
-                        db.close();
                         Toast.makeText(getApplicationContext(), "You are already at the subject screen", Toast.LENGTH_SHORT).show();
-                        finish();
                         return true;
                     case R.id.exit:
                         db.close();

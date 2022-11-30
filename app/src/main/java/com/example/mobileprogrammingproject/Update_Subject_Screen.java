@@ -95,6 +95,8 @@ public class Update_Subject_Screen extends AppCompatActivity {
                         finish();
                         return true;
                     case R.id.exit:
+                        finish();
+                        db.close();
                         System.exit(0);
                 }
                 return true;

@@ -89,6 +89,7 @@ public class Enroll_Student_Screen extends AppCompatActivity {
                     case R.id.exit:
                         db.close();
                         System.exit(0);
+                        finish();
                         return true;
                 }
                 return true;

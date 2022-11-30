@@ -61,6 +61,7 @@ public class Sandi_Screen extends AppCompatActivity {
                         finish();
                         return true;
                     case R.id.exit:
+                        finish();
                         System.exit(0);
                 }
                 return true;

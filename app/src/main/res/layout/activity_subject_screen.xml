@@ -18,6 +18,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="5dp" />
+
         <Button
             android:id="@+id/addSubject"
             android:layout_width="wrap_content"

@@ -68,49 +68,21 @@ public class Developers_Screen extends AppCompatActivity {
             }
         });
 
-        button = (Button) findViewById(R.id.feivel);
+        button = (Button) findViewById(R.id.buttonDeveloper);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openDoctoraScreen();
-            }
-        });
-
-        button = (Button) findViewById(R.id.jez);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openSandiScreen();
-            }
-        });
-
-        button = (Button) findViewById(R.id.joseph);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openTamayoScreen();
+                openAboutScreen();
             }
         });
 
     }
 
-    public void openDoctoraScreen(){
-        Intent intent = new Intent(this, Doctora_Screen.class);
+      public void openAboutScreen(){
+        Intent intent = new Intent(this, About_Screen.class);
         startActivity(intent);
         finish();
-    }
-
-    public void openSandiScreen(){
-        Intent intent = new Intent(this, Sandi_Screen.class);
-        startActivity(intent);
-        finish();
-    }
-
-    public void openTamayoScreen(){
-        Intent intent = new Intent(this, Tamayo_Screen.class);
-        startActivity(intent);
-        finish();
-    }
+      }
 
     public void onBackPressed(){
         Intent intent = new Intent(this, About_Screen.class);

@@ -7,48 +7,113 @@
     tools:context=".About_Screen"
     android:id="@+id/drawerLayout">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="#1864B0">
+        android:layout_height="match_parent">
 
-        <include
-            layout="@layout/navigation_action"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:id="@+id/textView10"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="About the app:"
-            android:textColor="#FFFFFF"
-            android:textSize="48sp" />
+            android:background="#1864B0"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif"
-            android:text="T &amp; S Academic Records is a mobile application that helps teachers and professors alike. For feedback you can contact us at T&amp;Ssupport@ts.com"
-            android:textAlignment="center"
-            android:textColor="#FFFFFF"
-            android:textSize="34sp" />
+            <include
+                layout="@layout/navigation_action"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
-        <Button
-            android:id="@+id/aboutDev"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:background="#D2FF5722"
-            android:gravity="center"
-            android:text="About Developers"
-            android:textColor="#FFFFFF"
-            app:backgroundTint="#FF9800"
-            app:iconTint="#000000" />
-    </LinearLayout>
+            <androidx.cardview.widget.CardView
+                android:layout_width="410dp"
+                android:layout_height="100dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:padding="10dp"
+                    android:weightSum="3">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="3"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="ABOUT"
+                            android:textColor="#2196F3"
+                            android:textSize="27dp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="410dp"
+                android:layout_height="500dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#2196F3"
+                    android:orientation="horizontal"
+                    android:padding="10dp"
+                    android:weightSum="3">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="3"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:justificationMode="inter_word"
+                            android:text="Developed by DoSanTam Tech"
+                            android:textColor="@color/white"
+                            android:textSize="28dp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:justificationMode="inter_word"
+                            android:text="\nT &amp; S Academic Records is a mobile application that helps teachers to organize the subjects and informations of the students. Teachers can enroll students into a specific subject. This application has the ability to CRUD data."
+                            android:textColor="@color/white"
+                            android:textSize="28dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:justificationMode="inter_word"
+                            android:text="\nFor more information you can contact us at T&amp;Ssupport@gmail.com"
+                            android:textColor="@color/white"
+                            android:textSize="20dp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <Button
+                android:id="@+id/aboutDev"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="15dp"
+                android:text="Developers"
+                android:textSize="18dp"
+                app:backgroundTint="#F5881F" />
+        </LinearLayout>
+    </ScrollView>
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_menu"

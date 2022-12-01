@@ -14,15 +14,6 @@
         android:theme="@style/Theme.MobileProgrammingProject"
         tools:targetApi="19">
         <activity
-            android:name=".Tamayo_Screen"
-            android:exported="true" />
-        <activity
-            android:name=".Sandi_Screen"
-            android:exported="true" />
-        <activity
-            android:name=".Doctora_Screen"
-            android:exported="true" />
-        <activity
             android:name=".Developers_Screen"
             android:exported="true" />
         <activity

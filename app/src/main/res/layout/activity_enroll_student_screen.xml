@@ -99,7 +99,13 @@
             android:layout_height="wrap_content"
             app:strokeWidth="1dp"
             app:strokeColor="@color/black"
-            app:cardCornerRadius="4dp"/>
+            app:cardCornerRadius="4dp">
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="10dp" />
 
         <Button
             android:id="@+id/enrollStudent"

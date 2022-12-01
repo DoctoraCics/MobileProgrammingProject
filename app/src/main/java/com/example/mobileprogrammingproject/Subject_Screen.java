@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -146,7 +147,7 @@ public class Subject_Screen extends AppCompatActivity implements RecyclerInterfa
 
         new AlertDialog.Builder(this)
                 .setTitle("Deletion")
-                .setMessage("Are you sure you want to delete this subject and its students?")
+                .setMessage("Are you sure you want to delete this subject, notes and its students?")
                 .setNegativeButton(android.R.string.no, null)
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
 
@@ -163,9 +164,16 @@ public class Subject_Screen extends AppCompatActivity implements RecyclerInterfa
             subjectRecyclerView subjectAdapter = new subjectRecyclerView(this, retrievedSubj, this);
             subjectView.setAdapter(subjectAdapter);
             subjectView.setLayoutManager(new LinearLayoutManager(this));
+            Toast.makeText(getApplicationContext(), "Subject Deleted", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(getApplicationContext(), "Deletion Failed", Toast.LENGTH_SHORT).show();
-
+        }
+        try {
+            SharedPreferences sharedPreferences = getSharedPreferences("NotePreferences", MODE_PRIVATE);
+            SharedPreferences.Editor myEdit = sharedPreferences.edit();
+            myEdit.remove(String.valueOf(retrievedSubj.get(position).getSubjectId()));
+            myEdit.commit();
+        } catch (Exception e) {
         }
     }
 }
